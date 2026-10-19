@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+venv_eht/
+.env
+.venv
+env/
+ENV/
+
+# Distribution / Packaging
+dist/
+build/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+2024-D02-01/          # Cloned EHT repo (auto-downloaded by scripts)
+results/              # Generated numerical results
+figures/              # Generated figures
+legacy/               # Obsolete/incorrect code
+*.npz                 # Saved numpy arrays (generated)
+*.png                 # Generated figures (if not in figures/)
+tesis_resultados_finales.png
+comparacion_schwarzschild_vs_kerr_newman.png
+chi2_scan_delta.png
+comparacion_*.png
+chi2_scan_results.npz
+
+# Data (keep structure, but ignore if not committed)
+# data/ - KEEP this, UVFITS are part of repo

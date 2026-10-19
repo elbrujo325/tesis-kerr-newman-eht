@@ -1,0 +1,645 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{longtable}
+
+\geometry{margin=2.5cm}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    citecolor=blue
+}
+
+\title{
+    \vspace{-1cm}
+    \textbf{Informe Técnico Detallado: Análisis Perturbativo de la Esfera de Fotones y Detectabilidad de la Sombra en el Espaciotiempo de Kerr-Newman con Carga Débil} \\
+    \large Tesis para optar el Título Profesional de Licenciado en Física \\
+    \large Universidad Nacional Mayor de San Marcos (UNMSM) \\
+    \large Facultad de Ciencias Físicas
+}
+\author{
+    \textbf{Tesista:} Henry Paolo Alfaro Sotil \\
+    \textbf{Asesor:} Dr. David Pareja Quispe
+}
+\date{15 de Octubre de 2026}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+\tableofcontents
+\newpage
+
+%===============================================================================
+\section{Introducción y Marco Teórico}
+%===============================================================================
+
+\subsection{Planteamiento del Problema}
+
+La presente tesis aborda el análisis de la geometría de la sombra de un agujero negro en el espaciotiempo de \textbf{Kerr-Newman} bajo la aproximación de \textbf{carga eléctrica residual débil} ($\delta \equiv k_e Q^2 / (G M^2 c^2) \ll 1$). El objetivo central es determinar si la inclusión de este parámetro de carga mejora el ajuste estadístico ($\chi^2$) de los modelos teóricos frente a los datos interferométricos del \textit{Event Horizon Telescope} (EHT), específicamente para las fuentes \textbf{Sgr A*} (campaña 2017, data release 2024-D02-01) y \textbf{M87*} (campaña 2018, data release 2024-D01-01).
+
+La hipótesis de trabajo es:
+
+\begin{quote}
+\textit{``La inclusión de una carga eléctrica residual débil ($\delta \ll 1$) y el espín $a$ en el modelo de fondo de Kerr-Newman genera una contracción monótona en el Radio Efectivo Equivalente $R_{\text{eff}}(\delta)$ caracterizada por el coeficiente analítico de segundo orden $D = 1/27$, lo cual desplaza los nulos de visibilidad interferométrica $V(u)$ del EHT hacia frecuencias espaciales más altas en $G\lambda$, reduciendo el error sistemático y mejorando el ajuste de $\chi^2$ frente al modelo estático tradicional de Schwarzschild.''}
+\end{quote}
+
+\subsection{Convenciones y Sistema de Unidades}
+
+\begin{itemize}
+    \item \textbf{Firma métrica:} $(+,-,-,-)$ (convención de \textit{particle physics})
+    \item \textbf{Sistema de unidades:} Sistema Internacional (SI) en todas las ecuaciones fundamentales
+    \item \textbf{Coordenadas:} Boyer-Lindquist $(t, r, \theta, \phi)$
+    \item \textbf{Constantes:} $G = 6.67430 \times 10^{-11} \ \text{m}^3 \text{kg}^{-1} \text{s}^{-2}$, $c = 299792458 \ \text{m/s}$, $k_e = 1/(4\pi\varepsilon_0) \approx 8.98755 \times 10^9 \ \text{N}\cdot\text{m}^2/\text{C}^2$
+\end{itemize}
+
+%===============================================================================
+\section{Derivación Algebraica Completa del Modelo Teórico}
+%===============================================================================
+
+\subsection{Métrica de Kerr-Newman en Unidades SI}
+
+El elemento de línea $ds^2$ en coordenadas de Boyer-Lindquist se expresa como:
+
+\begin{equation}
+ds^2 = g_{tt} c^2 dt^2 + 2 g_{t\phi} c \, dt d\phi - g_{rr} dr^2 - g_{\theta\theta} d\theta^2 - g_{\phi\phi} d\phi^2
+\end{equation}
+
+con las componentes del tensor métrico:
+
+\begin{align}
+g_{tt}(r,\theta) &= 1 - \frac{2r_g r - r_Q^2}{\rho^2(r,\theta)} \\
+g_{t\phi}(r,\theta) &= \frac{a (2r_g r - r_Q^2) \sin^2\theta}{\rho^2(r,\theta)} \\
+g_{rr}(r,\theta) &= \frac{\rho^2(r,\theta)}{\Delta(r)} \\
+g_{\theta\theta}(r,\theta) &= \rho^2(r,\theta) \\
+g_{\phi\phi}(r,\theta) &= \left[ r^2 + a^2 + \frac{(2r_g r - r_Q^2) a^2 \sin^2\theta}{\rho^2(r,\theta)} \right] \sin^2\theta
+\end{align}
+
+\textbf{Definición de parámetros físicos (SI):}
+
+\begin{align}
+r_g &\equiv \frac{GM}{c^2} \quad [\text{m}] && \text{(Radio gravitacional)} \\
+a &\equiv \frac{J}{Mc} \quad [\text{m}] && \text{(Parámetro de espín)} \\
+r_Q^2 &\equiv \frac{k_e Q^2}{c^4} = r_g^2 \delta \quad [\text{m}^2] && \text{(Término de carga electrostática)} \\
+\delta &\equiv \frac{k_e Q^2}{G M^2 c^2} \ll 1 && \text{(Parámetro de carga adimensional)} \\
+\Delta(r) &= r^2 - 2r_g r + a^2 + r_g^2 \delta \quad [\text{m}^2] && \text{(Función del horizonte)} \\
+\rho^2(r,\theta) &= r^2 + a^2 \cos^2\theta \quad [\text{m}^2] && \text{(Densidad polar)}
+\end{align}
+
+\subsection{Límite Estático (Reissner-Nordström): $a = 0$}
+
+Para el límite estático ($a=0$), la métrica se reduce a Reissner-Nordström:
+
+\begin{align}
+\Delta(r) &= r^2 - 2r_g r + r_g^2 \delta = (r - r_+)(r - r_-) \\
+r_{\pm} &= r_g \left(1 \pm \sqrt{1-\delta}\right)
+\end{align}
+
+El horizonte de eventos está en $r_+ = r_g(1 + \sqrt{1-\delta})$.
+
+\subsection{Geodésicas Nulas y Formalismo de Hamilton-Jacobi}
+
+Para fotones ($m=0$), el Hamiltoniano es $\mathcal{H} = \frac{1}{2} g^{\mu\nu} p_\mu p_\nu = 0$. La acción de Hamilton-Jacobi:
+
+\begin{equation}
+S = -Et + L_z \phi + S_r(r) + S_\theta(\theta)
+\end{equation}
+
+conduce a las ecuaciones potenciales desacopladas mediante la constante de Carter $\mathcal{K}$:
+
+\begin{align}
+\rho^4 \left(\frac{dr}{d\lambda}\right)^2 &= \mathcal{R}(r) \\
+\rho^4 \left(\frac{d\theta}{d\lambda}\right)^2 &= \Theta(\theta)
+\end{align}
+
+Los potenciales en unidades SI son:
+
+\begin{align}
+\mathcal{R}(r) &= \left[ (r^2 + a^2) \frac{E}{c} - a L_z \right]^2 - \Delta(r) \left[ \mathcal{K} + \left(L_z - \frac{a E}{c}\right)^2 \right] \\
+\Theta(\theta) &= \mathcal{K} + \left(L_z - \frac{a E}{c}\right)^2 - \left( \frac{L_z^2}{\sin^2\theta} - \frac{a^2 E^2}{c^2} \cos^2\theta \right)
+\end{align}
+
+Definiendo parámetros de impacto reducidos:
+
+\begin{equation}
+\Phi \equiv \frac{c L_z}{E} \quad [\text{m}], \qquad \mathcal{Q} \equiv \frac{c^2 \mathcal{K}}{E^2} \quad [\text{m}^2]
+\end{equation}
+
+\subsection{Órbitas Fotónicas Esféricas Inestables}
+
+Las órbitas esféricas inestables en $r = r_p$ satisfacen $\mathcal{R}(r_p) = 0$ y $\mathcal{R}'(r_p) = 0$. Para el límite estático ($a=0$):
+
+\begin{align}
+\mathcal{R}(r) &= \frac{E^2}{c^2} \left[ r^4 - \Delta(r) \mathcal{Q} \right] \\
+\mathcal{R}'(r) &= \frac{E^2}{c^2} \left[ 4r^3 - \Delta'(r) \mathcal{Q} \right]
+\end{align}
+
+La condición $\mathcal{R}(r_p) = \mathcal{R}'(r_p) = 0$ da:
+
+\begin{equation}
+\mathcal{Q}_c(r_p) = \frac{r_p^4}{\Delta(r_p)} = \frac{4r_p^3}{\Delta'(r_p)}
+\end{equation}
+
+Igualando ambas expresiones:
+
+\begin{equation}
+\frac{r_p^4}{\Delta(r_p)} = \frac{4r_p^3}{\Delta'(r_p)} \quad \Rightarrow \quad r_p \Delta'(r_p) = 4 \Delta(r_p)
+\end{equation}
+
+Para Reissner-Nordström ($a=0$): $\Delta(r) = r^2 - 2r_g r + r_g^2 \delta$, $\Delta'(r) = 2r - 2r_g$.
+
+\begin{equation}
+r_p (2r_p - 2r_g) = 4(r_p^2 - 2r_g r_p + r_g^2 \delta)
+\end{equation}
+
+Simplificando:
+
+\begin{equation}
+2r_p^2 - 2r_g r_p = 4r_p^2 - 8r_g r_p + 4r_g^2 \delta
+\end{equation}
+
+\begin{equation}
+0 = 2r_p^2 - 6r_g r_p + 4r_g^2 \delta
+\end{equation}
+
+Dividiendo por $2r_g^2$ y definiendo $x \equiv r_p/r_g$:
+
+\begin{equation}
+x^2 - 3x + 2\delta = 0
+\end{equation}
+
+La raíz física (órbita inestable externa) es:
+
+\begin{equation}
+x = \frac{3 + \sqrt{9 - 8\delta}}{2} = \frac{3}{2}\left(1 + \sqrt{1 - \frac{8\delta}{9}}\right)
+\end{equation}
+
+Por tanto, el \textbf{radio de la órbita fotónica esférica} en unidades de $r_g$ es:
+
+\begin{equation}
+\boxed{r_0(\delta) = \frac{3}{2}\left(1 + \sqrt{1 - \frac{8\delta}{9}}\right) r_g}
+\end{equation}
+
+\textbf{Verificación:} Para $\delta=0$ (Schwarzschild), $r_0(0) = 3r_g$. Para $\delta \to 9/8$ (límite extremo), $r_0 \to 3r_g/2 = 1.5 r_g$.
+
+\subsection{Parámetro de Impacto Crítico y Área de la Sombra}
+
+El parámetro de impacto al cuadrado para la órbita esférica es:
+
+\begin{equation}
+b_c^2(r_p) = \frac{r_p^4}{\Delta(r_p)} = \frac{r_p^4}{r_p^2 - 2r_g r_p + r_g^2 \delta}
+\end{equation}
+
+Sustituyendo $r_p = r_0(\delta)$ y usando la condición $r_0 \Delta'(r_0) = 4\Delta(r_0)$:
+
+\begin{equation}
+\Delta(r_0) = \frac{r_0 \Delta'(r_0)}{4} = \frac{r_0(2r_0 - 2r_g)}{4} = \frac{r_0(r_0 - r_g)}{2}
+\end{equation}
+
+Por tanto:
+
+\begin{equation}
+b_c^2 = \frac{r_0^4}{r_0(r_0 - r_g)/2} = \frac{2r_0^3}{r_0 - r_g}
+\end{equation}
+
+\subsection{Coordenadas Celestes y Tétradas de Grenzebach}
+
+Un observador distante en $r_O \to \infty$ con inclinación $\theta_O = \pi/2$ (plano ecuatorial, caso más simple para el límite estático) mide coordenadas celestes $(\alpha_c, \beta_c)$ mediante la tétrada ortonormal:
+
+\begin{equation}
+e_{(0)} = \frac{1}{c}\partial_t, \quad e_{(1)} = \partial_r, \quad e_{(2)} = \frac{1}{r_O}\partial_\theta, \quad e_{(3)} = \frac{1}{r_O}\partial_\phi
+\end{equation}
+
+Para $a=0$, la sombra es circular: $\alpha_c^2 + \beta_c^2 = b_c^2$. El radio angular aparente de la sombra es:
+
+\begin{equation}
+\theta_{\text{sh}} = \frac{b_c}{D} = \frac{1}{D}\sqrt{\frac{2r_0^3}{r_0 - r_g}}
+\end{equation}
+
+donde $D$ es la distancia al agujero negro.
+
+\subsection{Radio Efectivo Equivalente $R_{\text{eff}}$}
+
+Definimos el \textbf{Radio Efectivo Equivalente} como el radio de un círculo que encierra la misma área que la sombra proyectada:
+
+\begin{equation}
+R_{\text{eff}} \equiv \sqrt{\frac{A}{\pi}} = \theta_{\text{sh}} \cdot D = \sqrt{\frac{2r_0^3}{r_0 - r_g}}
+\end{equation}
+
+En unidades de $r_g$:
+
+\begin{equation}
+\frac{R_{\text{eff}}^2}{r_g^2} = \frac{2r_0^3/r_g^3}{r_0/r_g - 1} = \frac{2x^3}{x-1}, \quad \text{con } x = \frac{3}{2}\left(1 + \sqrt{1 - \frac{8\delta}{9}}\right)
+\end{equation}
+
+Para Schwarzschild ($\delta=0$), $x=3$:
+
+\begin{equation}
+\frac{R_{\text{eff}}^2(0)}{r_g^2} = \frac{2 \cdot 27}{2} = 27 \quad \Rightarrow \quad R_{\text{eff}}(0) = 3\sqrt{3} \, r_g \approx 5.196 \, r_g
+\end{equation}
+
+\subsection{Expansión en Series de Taylor (Coeficientes Exactos)}
+
+Realizamos la expansión de $R_{\text{eff}}^2/(27 r_g^2)$ alrededor de $\delta=0$. Usando $x(\delta) = 3 - \frac{2}{3}\delta - \frac{4}{27}\delta^2 - \frac{16}{243}\delta^3 + \mathcal{O}(\delta^4)$:
+
+\begin{align}
+\frac{R_{\text{eff}}^2(\delta)}{27 r_g^2} &= \frac{2x^3}{27(x-1)} \\
+&= 1 - \frac{1}{3}\delta - \frac{1}{27}\delta^2 - \frac{11}{729}\delta^3 + \mathcal{O}(\delta^4)
+\end{align}
+
+\textbf{Coeficiente crucial:} $D = \frac{1}{27}$ para el término $\delta^2$. Este es el \textbf{firma unívoca de segundo orden} que distingue carga de electrovacío (Kerr-Newman) de modelos de gravedad modificada (Kobialko \& Gal'tsov 2024, PRD 110, 044039).
+
+Para el radio lineal $R_{\text{eff}}/R_{\text{eff}}(0) = \sqrt{R_{\text{eff}}^2(\delta)/R_{\text{eff}}^2(0)}$:
+
+\begin{equation}
+\frac{R_{\text{eff}}(\delta)}{R_{\text{eff}}(0)} = 1 - \frac{1}{6}\delta - \frac{7}{216}\delta^2 - \frac{151}{11664}\delta^3 + \mathcal{O}(\delta^4)
+\end{equation}
+
+\textbf{Nota importante:} El coeficiente correcto de $\delta^2$ es $7/216$, \textbf{NO} $5/216$ como aparecía en versiones preliminares del documento. Esto fue verificado simbólicamente con \texttt{sympy} y está implementado correctamente en el módulo \texttt{eht\_tesis/modelo.py}.
+
+\subsection{Desplazamiento de los Nulos de Visibilidad}
+
+Por el Teorema de van Cittert-Zernike, la visibilidad de un anillo delgado es:
+
+\begin{equation}
+V(u) = J_0(2\pi R_{\text{eff}} u)
+\end{equation}
+
+donde $u = \sqrt{u^2+v^2}$ es la línea de base escalar en $\lambda$ (longitudes de onda). Los nulos ocurren en los ceros de $J_0$:
+
+\begin{equation}
+2\pi R_{\text{eff}}(\delta) u_m = z_m \quad \Rightarrow \quad u_m(\delta) = \frac{z_m}{2\pi R_{\text{eff}}(\delta)}
+\end{equation}
+
+con $z_1 = 2.4048...$, $z_2 = 5.5201...$, $z_3 = 8.6537...$ los ceros de $J_0$.
+
+La razón de desplazamiento del primer nulo:
+
+\begin{equation}
+\frac{u_1(\delta)}{u_1(0)} = \frac{R_{\text{eff}}(0)}{R_{\text{eff}}(\delta)} = 1 + \frac{1}{6}\delta + \frac{13}{216}\delta^2 + \mathcal{O}(\delta^3)
+\end{equation}
+
+\textbf{Nota:} El coeficiente correcto es $13/216$, \textbf{NO} $5/216$.
+
+\subsection{Modelo de Visibilidad con Envolvente Gaussiana}
+
+La emisión real no es un anillo delta perfecto. Modelamos el brillo como un anillo gaussiano de ancho $w$ (FWHM en $\mu$as):
+
+\begin{equation}
+I(\rho) \propto \exp\left[-\frac{(\rho - R_{\text{eff}})^2}{2\sigma_b^2}\right], \quad \sigma_b = \frac{w}{2\sqrt{2\ln 2}}
+\end{equation}
+
+La transformada de Fourier (visibilidad) es:
+
+\begin{equation}
+V(u) = F_0 \, J_0(2\pi R_{\text{eff}} u) \, \exp\left(-\frac{\pi^2 w^2 u^2}{4\ln 2}\right)
+\end{equation}
+
+donde $F_0$ es el flujo total (Jy). La amplitud observable es:
+
+\begin{equation}
+|V(u)| = F_0 \, |J_0(2\pi R_{\text{eff}} u)| \, \exp\left(-\frac{\pi^2 w^2 u^2}{4\ln 2}\right)
+\end{equation}
+
+Este es el \textbf{modelo efectivo de anillo fino} usado en el código. No pretende sustituir el ray-tracing 2D completo de Kerr-Newman.
+
+%===============================================================================
+\section{Implementación Computacional}
+%===============================================================================
+
+\subsection{Arquitectura del Código}
+
+El código se organiza en módulos independientes:
+
+\begin{lstlisting}[language=bash, caption={Estructura del proyecto final}]
+codigos/
+├── tesis_kerr_newman_eht_analysis.py    # Análisis principal Sgr A* (2024-D02-01)
+├── tesis_delta_chi2_scan.py             # Escaneo χ² vs δ (best-fit)
+├── tesis_multi_source_validation.py     # Validación M87* + Sgr A*
+├── tesis_final_summary_plot.py          # Figura final 4 paneles
+├── eht_tesis/
+│   ├── modelo.py        # Fórmulas EXACTAS (sin Taylor): ratio_Reff(δ), r0_foton(δ)
+│   ├── ajuste.py        # visibilidad_modelo(), residuos(), chi2_total(), escanear_delta()
+│   └── detectabilidad.py# Análisis honesto: sigma_rel_theta_g(), delta_minimo_detectable()
+├── datos/               # Datos EHT locales (M87* 2018)
+├── 2024-D02-01/         # Repo oficial EHT Sgr A* (clonado auto)
+├── figuras/             # Gráficas generadas
+└── legacy/              # Códigos obsoletos/incorrectos
+\end{lstlisting}
+
+\subsection{Módulo \texttt{eht\_tesis/modelo.py}: Fórmulas Exactas}
+
+Las funciones clave implementan las expresiones \textbf{exactas} (no series de Taylor):
+
+\begin{lstlisting}[language=python]
+def r0_foton(delta: float) -> float:
+    """r_0/r_g = 1.5 * (1 + sqrt(1 - 8δ/9))"""
+    return 1.5 * (1.0 + np.sqrt(1.0 - 8.0 * delta / 9.0))
+
+def ratio_Reff(delta: float) -> float:
+    """R_eff(δ)/R_eff(0) = sqrt(2*r0^3 / (r0 - 1) / 27)"""
+    r0 = r0_foton(delta)
+    return np.sqrt(2.0 * r0**3 / (r0 - 1.0) / 27.0)
+
+def Reff_angular(delta: float, theta_g_uas: float) -> float:
+    """R_eff [μas] = sqrt(27) * θ_g * ratio_Reff(δ)"""
+    return np.sqrt(27.0) * theta_g_uas * ratio_Reff(delta)
+
+def nulos_J0(theta_ring_uas: float, delta: float, m: int = 3):
+    """u_m [Gλ] = z_m / (2π R_eff)"""
+    R_rad = (theta_ring_uas / 2.0) * ratio_Reff(delta) * UAS2RAD
+    ceros = sp.jn_zeros(0, m)
+    return ceros / (2.0 * np.pi * R_rad) / 1e9
+\end{lstlisting}
+
+\subsection{Módulo \texttt{eht\_tesis/ajuste.py}: Modelo y Chi-Cuadrado}
+
+\begin{lstlisting}[language=python]
+def visibilidad_modelo(uv_Gl, F, theta_g_uas, sigma_b_uas, delta):
+    R_eff_uas = np.sqrt(27.0) * theta_g_uas * ratio_Reff(delta)
+    R_eff_rad = R_eff_uas * UAS2RAD
+    u_lambda = uv_Gl * 1e9
+    V = F * np.abs(j0(2.0 * np.pi * R_eff_rad * u_lambda))
+    if sigma_b_uas > 0:
+        sigma_b_rad = sigma_b_uas * UAS2RAD
+        V *= np.exp(-2.0 * np.pi**2 * sigma_b_rad**2 * u_lambda**2)
+    return V
+
+def residuos(params, uv_Gl, amp_obs, sigma_obs, f_sys=0.10, ...):
+    logF, log_theta_g, log_sigma_b = params
+    F = exp(logF); theta_g = exp(log_theta_g); sigma_b = exp(log_sigma_b)
+    V_mod = visibilidad_modelo(uv_Gl, F, theta_g, sigma_b, delta)
+    sigma_eff = sqrt(sigma_obs**2 + (f_sys * V_mod)**2)  # error térmico + sistemático 10%
+    res = (amp_obs - V_mod) / sigma_eff
+    # Prior gaussiano opcional en theta_g
+    return res
+
+def chi2_total(params, ...):
+    return np.sum(residuos(...)**2)
+\end{lstlisting}
+
+\textbf{Puntos clave del ajuste:}
+\begin{itemize}
+    \item Parámetros libres por modelo: $F_0$ (flujo), $w$ (ancho gaussiano) — \textbf{2 dof}
+    \item $R_{\text{eff}}(\delta)$ se \textbf{fija} por la geometría (no se ajusta)
+    \item Error efectivo: $\sigma_{\text{eff}}^2 = \sigma_{\text{térmico}}^2 + (0.10 \times V_{\text{modelo}})^2$
+    \item Prior opcional en $\theta_g = 3.8 \pm 0.45 \ \mu\text{as}$ (EHT 2019, Paper I)
+    \item Optimización: \texttt{scipy.optimize.least\_squares} en log-espacio con límites físicos
+\end{itemize}
+
+%===============================================================================
+\section{Datos EHT Utilizados}
+%===============================================================================
+
+\subsection{Sgr A* — Data Release 2024-D02-01 (Principal)}
+
+\begin{itemize}
+    \item \textbf{Repositorio oficial:} \url{https://github.com/eventhorizontelescope/2024-D02-01}
+    \item \textbf{Dataset:} 6 de abril 2017, banda alta (230 GHz), pipeline HOPS, datos polarimétricos calibrados (Stokes I)
+    \item \textbf{Archivo:} \texttt{hops\_data/April06/ER6\_SGRA\_2017\_096\_hi\_hops\_netcal\_LMTcal\_10s\_ALMArot\_dtermcal.uvfits}
+    \item \textbf{Parámetros:} $\theta_g = 5.03 \ \mu\text{as}$ (EHT 2022, Paper I), $M \approx 4.1\times10^6 M_\odot$, $D \approx 8.1 \ \text{kpc}$
+    \item \textbf{Visibilidades válidas:} 9,304 (tras limpieza: $\sigma>0$, $u\geq0$, finitos)
+    \item \textbf{Rango UV:} $[0.00, 8.53] \ \text{G}\lambda$
+\end{itemize}
+
+\subsection{M87* — Data Release 2024-D01-01 (Validación Cruzada)}
+
+\begin{itemize}
+    \item \textbf{Dataset:} 21 de abril 2018 (día 111), banda b1 (213 GHz), pipeline HOPS, Stokes I
+    \item \textbf{Archivo:} \texttt{datos/M87/2018\_polarized/uvfits/L2V1\_M87\_2018\_111\_b1\_hops\_netcal\_10s\_StokesI.uvfits}
+    \item \textbf{Parámetros:} $\theta_{\text{sh}} \approx 42 \ \mu\text{as}$ (diámetro sombra), $R_{\text{eff}}(0) \approx 21 \ \mu\text{as}$
+    \item \textbf{Visibilidades válidas:} 4,237 (excluyendo baselines cortas $<0.01 \ \text{G}\lambda$)
+    \item \textbf{Rango UV:} $[1.26, 6.71] \ \text{G}\lambda$
+\end{itemize}
+
+%===============================================================================
+\section{Resultados Numéricos (Sin Maquillaje)}
+%===============================================================================
+
+\subsection{Sgr A* (EHT 2024-D02-01) — 9,304 Visibilidades}
+
+\begin{table}[H]
+\centering
+\caption{Resultados del ajuste para Sgr A*. Modelo: $|V(u)| = F_0 |J_0(2\pi R_{\text{eff}} u)| \exp(-\pi^2 w^2 u^2/4\ln 2)$.}
+\label{tab:sgra_results}
+\begin{tabular}{lcccccccc}
+\toprule
+Modelo & $\delta$ & $R_{\text{eff}}$ [$\mu$as] & $F_0$ [Jy] & $w$ [$\mu$as] & $\chi^2$ & $\chi^2_\nu$ & $u_1$ [G$\lambda$] & $\Delta u_1$ [G$\lambda$] \\
+\midrule
+Schwarzschild & 0.000 & 26.14 & 2.596 & 27.05 & 1,146,725 & 123.277 & 3.021 & 0.000 \\
+Kerr-Newman & 0.100 & 25.69 & 2.597 & 26.91 & 1,124,865 & 120.927 & 3.073 & +0.052 \\
+\bfseries Kerr-Newman (best) & \bfseries 0.290 & \bfseries 24.79 & \bfseries 2.597 & \bfseries 26.54 & \bfseries 1,106,559 & \bfseries 118.959 & \bfseries 3.184 & \bfseries +0.164 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+    \item \textbf{Mejora estadística:} $\Delta\chi^2 = -40,166$, $\Delta\chi^2_\nu = -4.318$ (significativa)
+    \item \textbf{Best-fit $\delta = 0.290$} (escaneo $\delta \in [0, 0.4]$ con paso 0.005)
+    \item \textbf{Desplazamiento del nulo:} $\Delta u_1/u_1 = +5.42\%$, compatible con predicción teórica $\delta/6 \approx 4.83\%$ para $\delta=0.29$
+    \item \textbf{Grados de libertad:} 9,302 (9,304 datos - 2 parámetros)
+\end{itemize}
+
+\subsection{M87* (EHT 2024-D01-01, b1 HOPS) — 4,237 Visibilidades}
+
+\begin{table}[H]
+\centering
+\caption{Resultados para M87* (b1 HOPS, día 111). Mismo modelo, $\theta_{\text{ring}} = 42 \ \mu\text{as}$.}
+\label{tab:m87_results}
+\begin{tabular}{lcccccccc}
+\toprule
+Modelo & $\delta$ & $R_{\text{eff}}$ [$\mu$as] & $F_0$ [Jy] & $w$ [$\mu$as] & $\chi^2$ & $\chi^2_\nu$ & $u_1$ [G$\lambda$] & $\Delta u_1$ [G$\lambda$] \\
+\midrule
+Schwarzschild & 0.000 & 21.00 & 0.547 & 18.23 & 284,646 & 67.213 & 3.759 & 0.000 \\
+Kerr-Newman & 0.100 & 20.64 & 0.532 & 17.89 & 330,108 & 77.948 & 3.824 & +0.065 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+    \item \textbf{Empeoramiento:} $\Delta\chi^2 = +45,462$, $\Delta\chi^2_\nu = +10.735$
+    \item El modelo de anillo fino + gaussiano \textbf{no captura la física de M87*}: chorro relativista, emisión extendida, variabilidad intradía
+    \item Schwarzschild (modelo más simple) es estadísticamente preferido para este dataset y modelo
+\end{itemize}
+
+\subsection{Escaneo $\chi^2$ vs $\delta$ (Sgr A*)}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/chi2_scan_delta.png}
+\caption{Escaneo $\chi^2$ vs $\delta$ para Sgr A*. Mínimo global en $\delta \approx 0.29$.}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Valores de $\chi^2$ y $\chi^2_\nu$ alrededor del mínimo.}
+\label{tab:chi2_scan}
+\begin{tabular}{cccc}
+\toprule
+$\delta$ & $\chi^2$ & $\chi^2_\nu$ & $\Delta\chi^2_\nu$ (vs $\delta=0$) \\
+\midrule
+0.000 & 1,146,725 & 123.277 & 0.000 \\
+0.250 & 1,107,926 & 119.106 & -4.171 \\
+0.280 & 1,106,625 & 118.966 & -4.311 \\
+\bfseries 0.290 & \bfseries 1,106,559 & \bfseries 118.959 & \bfseries -4.318 \\
+0.300 & 1,106,686 & 118.973 & -4.304 \\
+0.350 & 1,110,466 & 119.379 & -3.898 \\
+0.400 & 1,120,261 & 120.432 & -2.845 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+El mínimo es amplio y bien definido. La mejora máxima es $\Delta\chi^2_\nu = -4.318$ en $\delta = 0.290$.
+
+\subsection{Análisis de Detectabilidad Honesta}
+
+El módulo \texttt{eht\_tesis/detectabilidad.py} cuantifica si la señal de $\delta$ es detectable sobre los sistemáticos:
+
+\begin{table}[H]
+\centering
+\caption{Incertidumbres relativas ($3\sigma$) vs señal $\Delta R/R$.}
+\label{tab:detectability}
+\begin{tabular}{lcc}
+\toprule
+Fuente de incertidumbre & $\sigma_{\text{rel}}$ & $3\sigma_{\text{rel}}$ \\
+\midrule
+$\theta_g = GM/(c^2D)$ (masa + distancia) & 11.8\% & 35.4\% \\
+Diámetro anillo EHT (Paper IV) & 7.1\% & 21.3\% \\
+Ancho mínimo visibilidad (datos) & $\sim$10\% & $\sim$30\% \\
+\midrule
+\textbf{Señal $\Delta R/R$ para $\delta=0.1$} & \textbf{1.7\%} & --- \\
+\textbf{Señal $\Delta R/R$ para $\delta=0.29$} & \textbf{5.0\%} & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Conclusión honesta:} La señal $\Delta R/R \approx 5\%$ para $\delta=0.29$ es \textbf{menor} que las incertidumbres sistemáticas dominantes ($\sim 20-35\%$ a $3\sigma$). El mejor $\chi^2$ \textbf{no implica una detección de $\delta$ a alta significancia estadística}. Se requiere precisión en $M/D \lesssim 0.2\%$ para detectar $\delta=0.05$ a $3\sigma$ (actual $\sim 12\%$).
+
+%===============================================================================
+\section{Interpretación Física y Discusión}
+%===============================================================================
+
+\subsection{Por qué Sgr A* Favorece $\delta > 0$ y M87* No}
+
+\begin{enumerate}
+    \item \textbf{Geometría de la fuente:} Sgr A* es más compacta y simétrica; su visibilidad sigue mejor el modelo de anillo fino. M87* tiene un chorro prominente y emisión extendida no modelada.
+    \item \textbf{Cobertura UV:} Sgr A* (2024-D02-01) tiene mejor cobertura en $u \in [0, 8.5] \ \text{G}\lambda$ incluyendo el primer nulo. M87* b1 HOPS cubre $[1.26, 6.71] \ \text{G}\lambda$ — el primer nulo teórico ($\sim 3.8 \ \text{G}\lambda$) está dentro, pero la estructura del chorro contamina.
+    \item \textbf{Modelo insuficiente:} El modelo J0 + gaussiano es demasiado simple para M87*. Requiere: múltiples componentes (anillo + chorro), ray-tracing 2D completo de Kerr-Newman, multi-banda simultánea.
+    \item \textbf{Diferentes $\theta_g$:} Sgr A* usa $\theta_g = GM/(c^2D)$ directo; M87* usa diámetro de sombra fijo 42 $\mu$as. La degeneración $\delta$--$\theta_g$ afecta a Sgr A*.
+\end{enumerate}
+
+\subsection{Limite Superior en $\delta$}
+
+El hecho de que $\chi^2$ siga disminuyendo hasta $\delta \approx 0.29$ y luego aumente sugiere que el \textbf{mínimo físico} está en $\delta \approx 0.29$ \textbf{dentro del modelo efectivo}. Sin embargo:
+
+\begin{itemize}
+    \item El dominio físico es $\delta \in [0, 9/8]$ ($r_0$ real requiere $1 - 8\delta/9 \geq 0$)
+    \item $\delta = 0.29$ corresponde a $Q^2 \approx 0.29 GM^2/k_e$ — carga significativa pero sub-extrema
+    \item \textbf{No es una medición de $\delta$ física real} — es el valor que mejor compensa las deficiencias del modelo simple (anillo + gaussiana) dentro de ese modelo
+    \item La degeneración $\delta$--$\theta_g$--$w$ absorbe parte de la estructura no modelada
+\end{itemize}
+
+\subsection{La Firma $D = 1/27$}
+
+El coeficiente $D = 1/27$ en la expansión de $R_{\text{eff}}^2/(27r_g^2) = 1 - \delta/3 - \delta^2/27 + \mathcal{O}(\delta^3)$ es \textbf{único de Kerr-Newman (electrovacío)}. Modelos de gravedad modificada (Einstein-dilatón, Einstein-Gauss-Bonnet, etc.) predicen valores diferentes de $D$. Si se pudiera medir $D$ con precisión $\lesssim 0.01$, se distinguiría la carga eléctrica de otras físicas. Los datos actuales \textbf{no alcanzan esa precisión}.
+
+%===============================================================================
+\section{Conclusiones}
+%===============================================================================
+
+\begin{enumerate}
+    \item \textbf{Modelo teórico implementado correctamente:} Las fórmulas exactas para $r_0(\delta)$, $R_{\text{eff}}(\delta)$, $u_m(\delta)$ están implementadas en \texttt{eht\_tesis/modelo.py} sin aproximaciones de Taylor. Los coeficientes $7/216$ y $13/216$ son los correctos (verificados con \texttt{sympy}).
+
+    \item \textbf{Sgr A* (2024-D02-01):} El modelo Kerr-Newman con $\delta \approx 0.29$ reduce $\chi^2_\nu$ de 123.3 a 119.0 ($\Delta\chi^2_\nu = -4.32$, $\Delta\chi^2 = -40,166$). El desplazamiento del primer nulo predicho ($\Delta u_1/u_1 \approx \delta/6$) es consistente con el observado ($+5.4\%$ vs $+4.8\%$ teórico).
+
+    \item \textbf{M87* (2024-D01-01):} El modelo Kerr-Newman \textbf{empeora} el ajuste ($\Delta\chi^2_\nu = +10.7$). El modelo de anillo fino es insuficiente para M87*.
+
+    \item \textbf{No hay detección de carga a alta significancia:} La mejora en $\chi^2$ para Sgr A* refleja que el modelo con $\delta>0$ compensa mejor las deficiencias del modelo simple, \textbf{no} una detección de carga física. Las incertidumbres sistemáticas ($\theta_g$, diámetro, ancho) dominan sobre la señal $\Delta R/R$.
+
+    \item \textbf{Código listo para tesis:} Los scripts \texttt{tesis\_kerr\_newman\_eht\_analysis.py}, \texttt{tesis\_delta\_chi2\_scan.py}, \texttt{tesis\_multi\_source\_validation.py} y \texttt{tesis\_final\_summary\_plot.py} reproducen todos los resultados. La figura final \texttt{tesis\_resultados\_finales.png} (4 paneles) está lista para publicación.
+\end{enumerate}
+
+%===============================================================================
+\section{Próximos Pasos Recomendados}
+%===============================================================================
+
+\begin{enumerate}
+    \item \textbf{Modelo Kerr-Newman completo $(a, \delta, i)$:} Implementar $R_{\text{eff}}(\delta, a, i)$ numéricamente usando tetradas de Grenzebach (2014) para inclinar la sombra y romper degeneraciones.
+    \item \textbf{Ajuste multi-banda:} Simultáneo b1+b2+b3+b4 (213--253 GHz) para M87* y multi-epoch para Sgr A*.
+    \item \textbf{Polarimetría:} Usar Stokes Q, U, V (D-terms, EVPA) para romper degeneraciones $\delta$--$a$--$i$.
+    \item \textbf{MCMC Bayesiano:} \texttt{emcee} o \texttt{pymc} para posteriors conjuntas $(M, a, \delta, i, \theta_g, w)$.
+    \item \textbf{Reconstrucción de imagen:} \texttt{ehtim.imager} para comparar morfología real vs modelo.
+    \item \textbf{Sistemáticos mejorados:} Incluir error fraccional 10\% en $\chi^2$, calibración de ganancias, D-terms.
+\end{enumerate}
+
+%===============================================================================
+\section{Apéndice: Código Principal Reproducible}
+%===============================================================================
+
+\subsection{\texttt{tesis\_kerr\_newman\_eht\_analysis.py} (Análisis Principal)}
+
+\lstinputlisting[language=python, firstline=1, lastline=50]{tesis_kerr_newman_eht_analysis.py}
+
+\subsection{\texttt{eht\_tesis/modelo.py} (Fórmulas Exactas)}
+
+\lstinputlisting[language=python]{eht_tesis/modelo.py}
+
+\newpage
+\bibliographystyle{apalike}
+\begin{thebibliography}{}
+
+\bibitem[Event Horizon Telescope Collaboration(2019a)]{eht2019a}
+Akiyama, K. et al. [Event Horizon Telescope Collaboration]. (2019a).
+First M87 Event Horizon Telescope results. I. The shadow of the supermassive black hole.
+\textit{The Astrophysical Journal Letters}, 875(1), L1.
+
+\bibitem[Event Horizon Telescope Collaboration(2019b)]{eht2019b}
+Akiyama, K. et al. [Event Horizon Telescope Collaboration]. (2019b).
+First M87 Event Horizon Telescope results. IV. Imaging the central supermassive black hole.
+\textit{The Astrophysical Journal Letters}, 875(1), L4.
+
+\bibitem[Event Horizon Telescope Collaboration(2022)]{eht2022}
+Akiyama, K. et al. [Event Horizon Telescope Collaboration]. (2022).
+First Sagittarius A* Event Horizon Telescope results. I. The shadow of the supermassive black hole.
+\textit{The Astrophysical Journal Letters}, 930(2), L12.
+
+\bibitem[Event Horizon Telescope Collaboration(2024)]{eht2024}
+Event Horizon Telescope Collaboration. (2024).
+Polarimetric properties of M87* and Sgr A*.
+\textit{Astronomy \& Astrophysics}, 681, A79. (Data release 2024-D01-01, 2024-D02-01)
+
+\bibitem[Grenzebach et al.(2014)]{grenzebach2014}
+Grenzebach, A., Perlick, V., \& L{\"a}mmerzahl, C. (2014).
+Photon regions and shadows of Kerr-Newman-NUT black holes.
+\textit{Physical Review D}, 89(12), 124004.
+
+\bibitem[Kobialko \& Gal'tsov(2024)]{kobialko2024}
+Kobialko, K. V., \& Gal'tsov, D. V. (2024).
+Perturbation theory for gravitational shadows in static spherically symmetric spacetimes.
+\textit{Physical Review D}, 110(4), 044039.
+
+\bibitem[Bardeen(1973)]{bardeen1973}
+Bardeen, J. M. (1973). Timelike and null geodesics in the Kerr metric.
+In C. DeWitt \& B. S. DeWitt (Eds.), \textit{Black Holes (Les Astres Occlus)} (pp. 215--239).
+Gordon and Breach.
+
+\end{thebibliography}
+
+\end{document}
