@@ -26,16 +26,26 @@ Este repositorio contiene el código de análisis para la tesis que valida un mo
    - **Sgr A*:** 2024-D02-01 (9,304 visibilidades, 6 abr 2017, banda alta, HOPS)
    - **M87*:** 2024-D01-01 (4,237 visibilidades, 21 abr 2018, b1, HOPS)
 
-### Resultados Clave
+### Resultados Clave (Ejecución Actual)
 
-| Fuente | Modelo | δ | R_eff [μas] | χ²_ν | Δχ²_ν |
-|--------|--------|---|-------------|------|-------|
-| Sgr A* | Schwarzschild | 0.000 | 26.14 | 123.28 | — |
-| Sgr A* | **KN (best-fit)** | **0.290** | **24.79** | **118.96** | **-4.32** ✓ |
-| M87* | Schwarzschild | 0.000 | 21.00 | 67.21 | — |
-| M87* | KN | 0.100 | 20.64 | 77.95 | +10.74 ✗ |
+| Fuente | Modelo | δ | R_eff [μas] | χ² | χ²_ν | u₁ [Gλ] | Δχ²_ν |
+|--------|--------|---|-------------|-----|------|---------|-------|
+| Sgr A* | Schwarzschild | 0.000 | 26.14 | 1,146,725 | 123.28 | 3.021 | — |
+| Sgr A* | **KN (best-fit)** | **0.290** | **24.79** | **1,106,559** | **118.96** | **3.184** | **-4.32** ✓ |
+| M87* | Schwarzschild | 0.000 | 21.00 | 284,646 | 67.21 | 3.759 | — |
+| M87* | KN | 0.100 | 20.64 | 330,108 | 77.95 | 3.824 | +10.74 ✗ |
 
-**Conclusión honesta:** Sgr A* favorece δ ≈ 0.29 (mejora χ²), pero la señal (ΔR/R ≈ 5%) es **menor que los sistemáticos** (θ_g ~11.8%, 3σ ~35%). No hay detección de carga a alta significancia. M87* requiere modelo más completo (chorro, emisión extendida).
+> **Nota M87*:** El script `validate_multi_source.py` usa θ_ring = 42 μas (radio anillo M87* 2018), mientras que `plot_final_summary.py` usa 42 μas como θ_ring. La diferencia en χ²_ν vs tabla original se debe a que `plot_final_summary.py` recalcula con el modelo importado. Los resultados de **Sgr A* son idénticos** al escaneo χ² vs δ (best-fit δ=0.290).
+
+**Conclusión honesta:** Sgr A* favorece δ ≈ 0.29 (mejora χ² en Δχ²_ν = -4.32), pero la señal (ΔR/R ≈ 5%) es **menor que los sistemáticos** (θ_g ~11.8%, 3σ ~35%). No hay detección de carga a alta significancia. M87* requiere modelo más completo (chorro, emisión extendida).
+
+---
+
+## Figura Principal para Tesis
+
+![Resultados finales](docs/FIGURAS_TESIS/tesis_resultados_finales.png)
+
+**Figura 1:** Resumen de 4 paneles: (a) χ² vs δ para Sgr A*, (b) Visibilidades Sgr A* vs modelos, (c) Visibilidades M87* vs modelos, (d) Tabla resumen comparativa.
 
 ---
 
@@ -80,7 +90,7 @@ tesis-kerr-newman-eht/
 
 ```bash
 # Clonar repositorio
-git clone https://github.com/<tu-usuario>/tesis-kerr-newman-eht.git
+git clone https://github.com/elbrujo325/tesis-kerr-newman-eht.git
 cd tesis-kerr-newman-eht
 
 # Crear entorno virtual (Python 3.11 recomendado)
@@ -153,6 +163,12 @@ Los archivos UVFITS necesarios están en `data/`:
 - **Sgr A*:** `data/SgrA/2017_first_image/uvfits_besttime/ER6_SGRA_2017_097_hi_hops_netcal-LMTcal-besttime_StokesI.uvfits`
 
 Para Sgr A* (script principal), el repo oficial `2024-D02-01` se clona automáticamente de GitHub EHT.
+
+---
+
+## Pipeline Interactivo (Jupyter Notebook)
+
+Ver [`notebooks/pipeline_tesis.ipynb`](notebooks/pipeline_tesis.ipynb) para ejecutar todo el análisis paso a paso, celda por celda, con visualizaciones intermedias.
 
 ---
 
