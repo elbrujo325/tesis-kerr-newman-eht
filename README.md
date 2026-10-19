@@ -177,4 +177,4 @@ MIT License — ver [LICENSE](LICENSE) para detalles.
 
 **Henry Paolo Alfaro Sotil**  
 UNMSM — Facultad de Ciencias Físicas  
-Email: [tu-email@unmsm.edu.pe]
+Email: [henry.alfaro1@unmsm.edu.pe]
