@@ -1,0 +1,404 @@
+\chapter{DINÁMICA GEODÉSICA Y PARÁMETRO DE IMPACTO EN KERR-NEWMAN}
+
+% ==============================================================================
+% SECCIÓN: DEDUCCIÓN DEL LAGRANGIANO Y CONSTANTES DE MOVIMIENTO
+% ==============================================================================
+
+\section{Deducción del Lagrangiano y constantes de movimiento}
+
+Siguiendo el formalismo analítico de la mecánica clásica y la relatividad general \citep{05villegas, M_P_Hobson_General_Relativity, Sean_Carroll_Spacetime}, la dinámica geodésica de partículas de prueba y fotones en el espaciotiempo de Kerr-Newman se deriva de forma compacta a través de la densidad lagrangiana por unidad de masa:
+\begin{equation}
+    \mathcal{L}(x^\mu, \dot{x}^\mu) = \frac{1}{2} g_{\mu\nu}(x) \frac{dx^\mu}{d\lambda} \frac{dx^\nu}{d\lambda} = \frac{1}{2} g_{\mu\nu}(x) \dot{x}^\mu \dot{x}^\nu
+    \label{eq:lagrangiano_gen}
+\end{equation}
+donde $\lambda$ representa un parámetro afín adecuado a lo largo de la trayectoria (el tiempo propio $\tau$ para partículas masivas o un parámetro afín arbitrario para fotones con $m=0$), y el punto denota la derivada respecto a $\lambda$ ($\dot{x}^\mu \equiv dx^\mu/d\lambda$).
+
+\subsection{Simetrías del espaciotiempo y teorema de Noether}
+
+La métrica de Kerr-Newman en coordenadas de Boyer-Lindquist $(t, r, \theta, \phi)$ no depende explícitamente ni del tiempo $t$ ni de la coordenada azimutal $\phi$ \citep{1403.5234v2, pdfcoffee.com_chandrasekhar}. Por consiguiente, la geometría admite dos vectores de Killing independientes:
+\begin{enumerate}
+    \item \textbf{Vector de Killing de estacionariedad ($\xi^\mu$):} $\xi^\mu = (1, 0, 0, 0)$, asociado a la invarianza por traducciones temporales ($\partial_t g_{\mu\nu} = 0$).
+    \item \textbf{Vector de Killing de axisimetría ($\eta^\mu$):} $\eta^\mu = (0, 0, 0, 1)$, asociado a la invarianza por rotaciones alrededor del eje de simetría ($\partial_\phi g_{\mu\nu} = 0$).
+\end{enumerate}
+
+Por el teorema de Noether, las coordenadas $t$ y $\phi$ son coordenadas cíclicas en el Lagrangiano $\mathcal{L}$, lo que garantiza la existencia de dos impulsos canónicamente conjugados que se conservan idénticamente a lo largo de toda geodésica \citep{05villegas, M_P_Hobson_General_Relativity}.
+
+\subsection{Matriz métrica en el plano ecuatorial \texorpdfstring{($\theta = \pi/2$)}{}}
+
+Para el estudio de las órbitas fotónicas en el plano ecuatorial ($\theta = \pi/2$), imponemos las condiciones geométricas $\dot{\theta} = 0$, $\sin\theta = 1$ y $\cos\theta = 0$. Bajo esta restricción, la función auxiliar de Boyer-Lindquist se reduce a $\Sigma(r,\pi/2) = r^2$, y la función del horizonte adopta la forma compacta $\Delta(r) = r^2 - 2 r_g r + a^2 + r_g^2 \delta$, donde $r_g \equiv \frac{GM}{c^2}$ es el radio gravitacional y $\delta \equiv \frac{Q^2}{4\pi\varepsilon_0 G M^2} \ll 1$ es el parámetro adimensional de carga eléctrica débil \citep{s10052-021-09180-y, 1403.5234v2}.
+
+La matriz covariante del tensor métrico $(g_{\mu\nu})$ en la base $(c t, r, \theta, \phi)$ para la firma de Minkowski $(+,-,-,-)$ en el plano ecuatorial se escribe explícitamente como:
+\begin{equation}
+    (g_{\mu\nu}) = \begin{pmatrix}
+        1 - \frac{2r_g}{r} + \frac{r_g^2 \delta}{r^2} & 0 & 0 & \frac{a}{r}\left(\frac{2r_g}{r} - \frac{r_g^2 \delta}{r^2}\right) \\[0.2cm]
+        0 & -\frac{r^2}{\Delta(r)} & 0 & 0 \\[0.2cm]
+        0 & 0 & -r^2 & 0 \\[0.2cm]
+        \frac{a}{r}\left(\frac{2r_g}{r} - \frac{r_g^2 \delta}{r^2}\right) & 0 & 0 & -\left[ r^2 + a^2 + \frac{a^2}{r}\left(\frac{2r_g}{r} - \frac{r_g^2 \delta}{r^2}\right) \right]
+    \end{pmatrix}
+    \label{eq:matriz_g_KN}
+\end{equation}
+
+Sustituyendo las componentes de la matriz~(\ref{eq:matriz_g_KN}) en la ec.~(\ref{eq:lagrangiano_gen}), desplegamos la expresión del Lagrangiano $\mathcal{L}$ en el plano ecuatorial:
+\begin{align}
+    \mathcal{L} &= \frac{1}{2} \left[ g_{tt} c^2 \dot{t}^2 + 2 c \, g_{t\phi} \dot{t} \dot{\phi} + g_{rr} \dot{r}^2 + g_{\phi\phi} \dot{\phi}^2 \right] \nonumber \\[0.2cm]
+    &= \frac{1}{2} \left[ \left(1 - \frac{2r_g}{r} + \frac{r_g^2 \delta}{r^2}\right) c^2 \dot{t}^2 + \frac{2 a c}{r}\left(\frac{2r_g}{r} - \frac{r_g^2 \delta}{r^2}\right) \dot{t}\dot{\phi} \right. \nonumber \\
+    &\quad \left. - \frac{r^2}{\Delta(r)} \dot{r}^2 - \left(r^2 + a^2 + \frac{a^2}{r}\left(\frac{2r_g}{r} - \frac{r_g^2 \delta}{r^2}\right)\right) \dot{\phi}^2 \right]
+    \label{eq:L_desarrollado}
+\end{align}
+
+\subsection{Deducción analítica de las constantes de movimiento}
+
+Aplicamos el formalismo de Euler-Lagrange para cada una de las coordenadas cíclicas:
+
+\paragraph{1. Conservación de la energía ($E$):}
+Para la coordenada temporal $q^0 = t$, la ecuación de Euler-Lagrange establece:
+\begin{equation}
+    \frac{d}{d\lambda}\left( \frac{\partial \mathcal{L}}{\partial \dot{t}} \right) - \frac{\partial \mathcal{L}}{\partial t} = 0
+    \label{eq:euler_lagrange_t}
+\end{equation}
+Dado que $\frac{\partial \mathcal{L}}{\partial t} = 0$, se deduce que el momento conjugado temporal $p_t$ es constante a lo largo de la trayectoria. Derivando directamente la ec.~(\ref{eq:L_desarrollado}) respecto a $\dot{t}$:
+\begin{equation}
+    p_t \equiv \frac{\partial \mathcal{L}}{\partial \dot{t}} = g_{tt} c^2 \dot{t} + g_{t\phi} c \, \dot{\phi} = \text{constante} \equiv E
+    \label{eq:E_conservada_paso1}
+\end{equation}
+\begin{equation}
+    E = \left(1 - \frac{2r_g}{r} + \frac{r_g^2 \delta}{r^2}\right) c^2 \dot{t} + \frac{a c}{r}\left(\frac{2r_g}{r} - \frac{r_g^2 \delta}{r^2}\right) \dot{\phi}
+    \label{eq:E_conservada_def}
+\end{equation}
+donde $E$ representa la energía conservada por el fotón tal como la mide un observador en el infinito.
+
+\paragraph{2. Conservación del momento angular azimutal ($L_z$):}
+Para la coordenada azimutal $q^3 = \phi$, la ecuación de Euler-Lagrange exige:
+\begin{equation}
+    \frac{d}{d\lambda}\left( \frac{\partial \mathcal{L}}{\partial \dot{\phi}} \right) - \frac{\partial \mathcal{L}}{\partial \phi} = 0
+    \label{eq:euler_lagrange_phi}
+\end{equation}
+Al ser $\frac{\partial \mathcal{L}}{\partial \phi} = 0$, el momento conjugado azimutal $p_\phi$ se conserva idénticamente. Derivando la ec.~(\ref{eq:L_desarrollado}) respecto a $\dot{\phi}$:
+\begin{equation}
+    p_\phi \equiv \frac{\partial \mathcal{L}}{\partial \dot{\phi}} = g_{t\phi} c \, \dot{t} + g_{\phi\phi} \dot{\phi} = \text{constante} \equiv -L_z
+    \label{eq:Lz_conservada_paso1}
+\end{equation}
+\begin{equation}
+    -L_z = \frac{a c}{r}\left(\frac{2r_g}{r} - \frac{r_g^2 \delta}{r^2}\right) \dot{t} - \left[ r^2 + a^2 + \frac{a^2}{r}\left(\frac{2r_g}{r} - \frac{r_g^2 \delta}{r^2}\right) \right] \dot{\phi}
+    \label{eq:Lz_conservada_def}
+\end{equation}
+El signo menos en el momento angular $p_\phi = -L_z$ proviene de la firma métrica espacial $(-,-,-)$ de la convención de Minkowski $(+,-,-,-)$ \citep{05villegas, M_P_Hobson_General_Relativity}. Las ecuaciones~(\ref{eq:E_conservada_def}) y~(\ref{eq:Lz_conservada_def}) constituyen un sistema lineal cerrado de dos ecuaciones algebraicas para las velocidades coordenadas $(\dot{t}, \dot{\phi})$, cuya resolución analítica permite desacoplar los momentos y formular el potencial radial efectivo $\mathcal{R}(r)$ en el Capítulo III.
+
+\section{Separabilidad mediante el formalismo de Hamilton-Jacobi, la Constante de Carter y el potencial radial \texorpdfstring{$\mathcal{R}(r)$}{R(r)}}
+
+Para describir la dinámica de fotones a partir de sus fundamentos analíticos, recurrimos a la Ecuación de Hamilton-Jacobi \citep{pdfcoffee.com_chandrasekhar, 05villegas}. En un espaciotiempo curvado, el Hamiltoniano $H(x^\mu, p_\mu)$ para una partícula de prueba se construye a partir de las componentes contravariantes del tensor métrico $g^{\mu\nu}$ y de los momentos canónicos conjugados $p_\mu = g_{\mu\nu} \dot{x}^\nu$ mediante la expresión \citep{05villegas}:
+\begin{equation}
+    H(x^\mu, p_\mu) = \frac{1}{2} g^{\mu\nu} p_\mu p_\nu
+    \label{eq:hamiltoniano_gen}
+\end{equation}
+Para la propagación de fotones (geodésicas nulas), la condición de norma $g_{\mu\nu}\dot{x}^\mu\dot{x}^\nu = 0$ exige que el Hamiltoniano satisfaga la restricción $H = 0$ \citep{05villegas, chaos_fractals_photon_ring}.
+
+Sustituyendo los momentos conjugados $p_\mu$ por las derivadas parciales de la Función Principal de Hamilton o Acción de Jacobi $S(x^\mu)$, mediante la relación $p_\mu = \frac{\partial S}{\partial x^\mu}$, obtenemos la Ecuación de Hamilton-Jacobi \citep{05villegas}:
+\begin{equation}
+    g^{\mu\nu} \frac{\partial S}{\partial x^\mu} \frac{\partial S}{\partial x^\nu} = 0
+    \label{eq:HJ_general}
+\end{equation}
+\newpage
+Para evaluar explícitamente la Ecuación~\eqref{eq:HJ_general}, tomamos las ecuaciones ~\eqref{eq:g_contra_tt},~\eqref{eq:g_contra_tphi},~\eqref{eq:g_contra_rr}, ~\eqref{eq:g_contra_thetatheta}, ~\eqref{eq:g_contra_phiphi} del tensor métrico de Kerr-Newman $g_{\mu\nu}$ en coordenadas de Boyer-Lindquist $(t, r, \theta, \phi)$ $g^{\mu\nu}$ \citep{1403.5234v2, chaos_fractals_photon_ring}:
+
+
+Desarrollando la Ecuación~\eqref{eq:HJ_general} término a término mediante las componentes contravariantes~(\ref{eq:g_contra_tt}--\ref{eq:g_contra_phiphi}):
+\begin{equation}
+    g^{tt}\left(\frac{\partial S}{\partial t}\right)^2 + 2g^{t\phi}\left(\frac{\partial S}{\partial t}\right)\left(\frac{\partial S}{\partial \phi}\right) + g^{\phi\phi}\left(\frac{\partial S}{\partial \phi}\right)^2 + g^{rr}\left(\frac{\partial S}{\partial r}\right)^2 + g^{\theta\theta}\left(\frac{\partial S}{\partial \theta}\right)^2 = 0
+    \label{eq:HJ_expandida}
+\end{equation}
+
+Puesto que las componentes de la métrica de Kerr-Newman no dependen de las coordenadas $t$ ni $\phi$, estas son cíclicas. La simetría por traslación temporal y rotación azimutal garantiza la existencia de las constantes de movimiento $E$ (energía conservada) y $L_z$ (momento angular azimutal) \citep{ chaos_fractals_photon_ring}:
+\begin{equation}
+    p_t = \frac{\partial S}{\partial t} \equiv -E, \quad p_\phi = \frac{\partial S}{\partial \phi} \equiv L_z
+    \label{eq:constantes_E_Lz}
+\end{equation}
+
+
+\subsection{Impulsos canónicos y separación de la ecuación de Hamilton-Jacobi}
+
+En el formalismo de Hamilton-Jacobi para geodésicas nulas ($m=0$), la función de acción separada se propone como \citep{pdfcoffee.com_chandrasekhar, 1403.5234v2}:
+\begin{equation}
+    S(t,r,\theta,\phi) = -E t + L_z \phi + S_r(r) + S_\theta(\theta)
+    \label{eq:ansatz_S_oficial}
+\end{equation}
+donde las derivadas parciales de la acción definen los impulsos canónicamente conjugados $p_\mu \equiv \frac{\partial S}{\partial x^\mu}$. Empleando la relación entre los impulsos y las cuadrivelocidades $p_\mu = g_{\mu\nu} \dot{x}^\nu$, explicitamos cada componente en el Sistema Internacional (SI) bajo la firma de Minkowski $(+,-,-,-)$:
+\begin{enumerate}
+    \item \textbf{Impulso temporal:} $p_t \equiv \frac{\partial S}{\partial t} = -E = g_{tt} c^2 \dot{t} + g_{t\phi} c \, \dot{\phi}$
+    \item \textbf{Impulso azimutal:} $p_\phi \equiv \frac{\partial S}{\partial \phi} = L_z = g_{t\phi} c \, \dot{t} + g_{\phi\phi} \dot{\phi}$
+    \item \textbf{Impulso radial:} $p_r \equiv \frac{\partial S}{\partial r} = \frac{dS_r}{dr} = g_{rr} \dot{r} = -\frac{\Sigma(r,\theta)}{\Delta(r)} \dot{r}$
+    \item \textbf{Impulso angular:} $p_\theta \equiv \frac{\partial S}{\partial \theta} = \frac{dS_\theta}{d\theta} = g_{\theta\theta} \dot{\theta} = -\Sigma(r,\theta) \dot{\theta}$
+\end{enumerate}
+
+Sustituyendo los impulsos $p_\mu$ en la ecuación covariante de Hamilton-Jacobi $g^{\mu\nu} p_\mu p_\nu = 0$, obtenemos:
+\begin{equation}
+    g^{tt} E^2 - 2g^{t\phi} E L_z + g^{\phi\phi} L_z^2 + g^{rr} \left(\frac{dS_r}{dr}\right)^2 + g^{\theta\theta} \left(\frac{dS_\theta}{d\theta}\right)^2 = 0
+    \label{eq:HJ_impulsos}
+\end{equation}
+Sustituyendo las componentes métricas espaciales contravariantes $g^{rr} = -\frac{\Delta}{\Sigma}$ y $g^{\theta\theta} = -\frac{1}{\Sigma}$:
+\begin{equation}
+    g^{tt} E^2 - 2g^{t\phi} E L_z + g^{\phi\phi} L_z^2 - \frac{\Delta}{\Sigma} \left(\frac{dS_r}{dr}\right)^2 - \frac{1}{\Sigma} \left(\frac{dS_\theta}{d\theta}\right)^2 = 0
+    \label{eq:HJ_sustituido}
+\end{equation}
+
+Puesto que la función de Boyer-Lindquist $\Sigma(r,\theta) = r^2 + a^2 \cos^2\theta > 0$ es estrictamente positiva fuera de la singularidad, \textbf{multiplicamos toda la Ecuación~(\ref{eq:HJ_sustituido}) por $\Sigma(r,\theta)$} para simplificar los denominadores espaciales de las derivadas de la acción:
+\begin{equation}
+    \Sigma \left( g^{tt} E^2 - 2g^{t\phi} E L_z + g^{\phi\phi} L_z^2 \right) - \Delta \left(\frac{dS_r}{dr}\right)^2 - \left(\frac{dS_\theta}{d\theta}\right)^2 = 0
+    \label{eq:HJ_multiplicado_sigma}
+\end{equation}
+
+Al reemplazar en el primer término de la Ecuación~(\ref{eq:HJ_multiplicado_sigma}) las componentes contravariantes $g^{tt}, g^{t\phi}, g^{\phi\phi}$ deducidas previamente en las Ecuaciones~(\ref{eq:g_contra_tt}--\ref{eq:g_contra_phiphi}), el factor $\Sigma$ del denominador general se simplifica idénticamente. Agrupando los trinomios cuadrados perfectos en el numerador, se obtiene la descomposición exacta \citep{pdfcoffee.com_chandrasekhar, Grenzebach2014}:
+\begin{equation}
+    \Sigma \left( g^{tt} E^2 - 2g^{t\phi} E L_z + g^{\phi\phi} L_z^2 \right) = \frac{1}{\Delta(r)} \left[ \frac{E}{c}(r^2+a^2) - a L_z \right]^2 - \left( \frac{a E}{c} \sin\theta - \frac{L_z}{\sin\theta} \right)^2
+    \label{eq:desarrollo_binomios_simplificado}
+\end{equation}
+
+Sustituyendo la Ecuación~(\ref{eq:desarrollo_binomios_simplificado}) en la Ecuación~(\ref{eq:HJ_multiplicado_sigma}):
+\begin{equation}
+    \frac{1}{\Delta(r)} \left[ \frac{E}{c}(r^2+a^2) - a L_z \right]^2 - \left( \frac{a E}{c} \sin\theta - \frac{L_z}{\sin\theta} \right)^2 - \Delta(r) \left(\frac{dS_r}{dr}\right)^2 - \left(\frac{dS_\theta}{d\theta}\right)^2 = 0
+    \label{eq:HJ_desplegado_completo}
+\end{equation}
+
+Reorganizamos la Ecuación~(\ref{eq:HJ_desplegado_completo}) aislando la totalidad de los términos que dependen de la coordenada radial $r$ a la izquierda y los que dependen del ángulo polar $\theta$ a la derecha:
+\begin{equation}
+    \frac{1}{\Delta(r)} \left[ \frac{E}{c}(r^2+a^2) - a L_z \right]^2 - \Delta(r) \left(\frac{dS_r}{dr}\right)^2 = \left(\frac{dS_\theta}{d\theta}\right)^2 + \left( \frac{a E}{c} \sin\theta - \frac{L_z}{\sin\theta} \right)^2
+    \label{eq:separacion_estricta}
+\end{equation}
+
+Dado que el lado izquierdo de la Ecuación~(\ref{eq:separacion_estricta}) es una función exclusiva de $r$ y el lado derecho es una función exclusiva de $\theta$, la única forma de que la igualdad se mantenga para todo el espacio-tiempo es que ambas expresiones sean iguales a una constante de separación independiente. Siguiendo la convención clásica de Carter \citep{pdfcoffee.com_chandrasekhar, 1403.5234v2}, definimos dicha constante como $\mathcal{K} + \left(L_z - \frac{a E}{c}\right)^2$, donde $\mathcal{K}$ es la constante de Carter.
+
+\subsection{Formulación explícita del Potencial Radial Efectivo y la velocidad radial}
+
+De la parte radial de la Ecuación~(\ref{eq:separacion_estricta}) igualada a la constante de separación:
+\begin{equation}
+    \frac{1}{\Delta(r)} \left[ \frac{E}{c}(r^2+a^2) - a L_z \right]^2 - \Delta(r) \left(\frac{dS_r}{dr}\right)^2 = \mathcal{K} + \left(L_z - \frac{a E}{c}\right)^2
+    \label{eq:radial_separada_paso1}
+\end{equation}
+
+Multiplicando toda la Ecuación~(\ref{eq:radial_separada_paso1}) por la función del horizonte $\Delta(r)$:
+\begin{equation}
+    \left[ \frac{E}{c}(r^2+a^2) - a L_z \right]^2 - \Delta^2(r) \left(\frac{dS_r}{dr}\right)^2 = \Delta(r) \left[ \mathcal{K} + \left(L_z - \frac{a E}{c}\right)^2 \right]
+    \label{eq:radial_separada_paso2}
+\end{equation}
+
+Despejando el término derivativo de la acción radial $\Delta^2(r) \left(\frac{dS_r}{dr}\right)^2$, definimos formalmente el \textbf{Potencial Radial Efectivo} $\mathcal{R}(r)$ en unidades del SI ($\text{J}^2\cdot\text{m}^2$) \citep{1403.5234v2, Kobialko2024}:
+\begin{equation}
+    \mathcal{R}(r) \equiv \Delta^2(r) \left(\frac{dS_r}{dr}\right)^2 = \left[ \frac{E}{c}(r^2+a^2) - a L_z \right]^2 - \Delta(r) \left[ \mathcal{K} + \left(L_z - \frac{a E}{c}\right)^2 \right]
+    \label{eq:potencial_R_SI_final}
+\end{equation}
+
+Finalmente, conectamos la derivada de la acción radial $\frac{dS_r}{dr}$ con la velocidad coordenada radial $\dot{r} \equiv \frac{dr}{d\lambda}$. Empleando la relación del impulso radial $p_r = \frac{dS_r}{dr} = -\frac{\Sigma}{\Delta} \dot{r}$, tenemos:
+\begin{equation}
+    \Delta(r) \left(\frac{dS_r}{dr}\right) = -\Sigma(r,\theta) \, \dot{r}
+    \label{eq:relacion_p_r_dot_r}
+\end{equation}
+Elevando la Ecuación~(\ref{eq:relacion_p_r_dot_r}) al cuadrado e igualando con la definición del potencial $\mathcal{R}(r)$ de la Ecuación~(\ref{eq:potencial_R_SI_final}):
+\begin{equation}
+    \Sigma^2(r,\theta) \left( \frac{dr}{d\lambda} \right)^2 = \mathcal{R}(r) \quad \implies \quad \Sigma(r,\theta) \frac{dr}{d\lambda} = \pm \sqrt{\mathcal{R}(r)}
+    \label{eq:ecuacion_movimiento_r_final}
+\end{equation}
+Queda demostrado así que la derivada de la acción radial $\frac{dS_r}{dr}$ no desaparece, sino que rige exactamente la ecuación diferencial cinemática del movimiento fotónico radial~(\ref{eq:ecuacion_movimiento_r_final}).
+
+
+Reagrupando los términos del corchete en aquellos que contienen el factor $\Delta$ y aquellos que no lo contienen:
+\begin{align}
+    &\left[ \frac{E^2}{c^2}(r^2+a^2)^2 - \frac{2a E L_z}{c}(r^2+a^2) + a^2 L_z^2 \right] \nonumber \\
+    &\quad - \Delta \left[ \frac{a^2 E^2}{c^2}\sin^2\theta - \frac{2a E L_z}{c} + \frac{L_z^2}{\sin^2\theta} \right]
+    \label{eq:paso_algebraico_2}
+\end{align}
+Completando los cuadrados perfectos en ambas agrupaciones algebraicas:
+\begin{align}
+    \left[ \frac{E^2}{c^2}(r^2+a^2)^2 - \frac{2a E L_z}{c}(r^2+a^2) + a^2 L_z^2 \right] &= \left[ (r^2+a^2)\frac{E}{c} - a L_z \right]^2 \label{eq:cuadrado_1} \\
+    \left[ \frac{a^2 E^2}{c^2}\sin^2\theta - \frac{2a E L_z}{c} + \frac{L_z^2}{\sin^2\theta} \right] &= \left( \frac{L_z}{\sin\theta} - a \frac{E}{c} \sin\theta \right)^2 \label{eq:cuadrado_2}
+\end{align}
+
+Sustituyendo los cuadrados~(\ref{eq:cuadrado_1}--\ref{eq:cuadrado_2}) en la Ecuación~\eqref{eq:paso_algebraico_1}, se obtiene la identidad de separación exacta:
+\begin{equation}
+    g^{tt} E^2 - 2g^{t\phi} E L_z + g^{\phi\phi} L_z^2 = \frac{1}{\Sigma} \left[ \frac{1}{\Delta} \left( (r^2 + a^2)\frac{E}{c} - a L_z \right)^2 - \frac{1}{\sin^2\theta} \left( \frac{L_z}{\sin\theta} - a \frac{E}{c} \sin\theta \right)^2 \right]
+    \label{eq:identidad_separacion}
+\end{equation}
+
+Sustituyendo la Identidad~\eqref{eq:identidad_separacion} en la Ecuación~\eqref{eq:HJ_sustituido} y multiplicando toda la ecuación por la función métrica $\Sigma(r,\theta) \neq 0$:
+\begin{equation}
+    \frac{1}{\Delta} \left( (r^2 + a^2)\frac{E}{c} - a L_z \right)^2 - \frac{1}{\sin^2\theta} \left( \frac{L_z}{\sin\theta} - a \frac{E}{c} \sin\theta \right)^2 - \Delta \left(\frac{dS_r}{dr}\right)^2 - \left(\frac{dS_\theta}{d\theta}\right)^2 = 0
+\end{equation}
+
+Aislando las funciones que dependen exclusivamente de la coordenada radial $r$ en el miembro izquierdo y aquellas que dependen de la coordenada angular $\theta$ en el miembro derecho:
+\begin{equation}
+    \frac{1}{\Delta} \left( (r^2 + a^2)\frac{E}{c} - a L_z \right)^2 - \Delta \left(\frac{d S_r}{dr}\right)^2 = \left(\frac{d S_\theta}{d\theta}\right)^2 + \left( \frac{L_z}{\sin\theta} - a \frac{E}{c} \sin\theta \right)^2
+    \label{eq:separacion_completa}
+\end{equation}
+
+Debido a que el miembro izquierdo de la Ecuación~\eqref{eq:separacion_completa} depende únicamente de $r$ y el miembro derecho depende exclusivamente de $\theta$, ambos lados deben ser iguales a una constante de separación independiente de las coordenadas. Esta constante es la \textbf{Constante de separación de Carter} $\mathcal{K}$ \citep{pdfcoffee.com_chandrasekhar, 1403.5234v2, Achour_2025_J._Cosmol._Astropart._Phys._2025_012}:
+\begin{align}
+    \left(\frac{d S_\theta}{d\theta}\right)^2 + \left( \frac{L_z}{\sin\theta} - a \frac{E}{c} \sin\theta \right)^2 &= \mathcal{K} \label{eq:carter_angular} \\
+    \frac{1}{\Delta} \left( (r^2 + a^2)\frac{E}{c} - a L_z \right)^2 - \Delta \left(\frac{d S_r}{dr}\right)^2 &= \mathcal{K} \label{eq:carter_radial}
+\end{align}
+
+Para el movimiento plano en el ecuador ($\theta = \pi/2$), tenemos que $\sin\theta = 1$ y $\frac{d S_\theta}{d\theta} = 0$. Evaluando la Ecuación~\eqref{eq:carter_angular} bajo esta restricción, la constante de Carter adopta la forma reducida \citep{perturbaciones_en_bh}:
+\begin{equation}
+    \mathcal{K} = \left( L_z - \frac{a E}{c} \right)^2
+    \label{eq:carter_ecuatorial}
+\end{equation}
+
+A partir de la ecuación de separación radial~\eqref{eq:carter_radial}, despejamos el término que contiene el momento radial $p_r = \frac{d S_r}{dr}$ multiplicando por $\Delta(r)$:
+\begin{equation}
+    \Delta^2 \left(\frac{d S_r}{dr}\right)^2 = \left( (r^2 + a^2)\frac{E}{c} - a L_z \right)^2 - \Delta(r) \mathcal{K}
+    \label{eq:Sr_despejada}
+\end{equation}
+
+Por otra parte, la relación entre el momento canónico $p_r$ y la velocidad geodésica radial $\dot{r} = \frac{dr}{d\lambda}$ viene dada por $p_r = g_{rr} \dot{r}$. Considerando la componente $g_{rr} = -\frac{\Sigma}{\Delta}$, se obtiene \citep{05villegas, 1403.5234v2}:
+\begin{equation}
+    p_r = \frac{d S_r}{dr} = -\frac{\Sigma}{\Delta} \frac{dr}{d\lambda}
+    \label{eq:pr_cinematica}
+\end{equation}
+En el plano ecuatorial ($\theta = \pi/2$), la función métrica es $\Sigma = r^2$. Sustituyendo la Ecuación~\eqref{eq:pr_cinematica} en el miembro izquierdo de la Ecuación~\eqref{eq:Sr_despejada}:
+\begin{equation}
+    \Delta^2 \left( -\frac{r^2}{\Delta} \frac{dr}{d\lambda} \right)^2 = r^4 \left(\frac{dr}{d\lambda}\right)^2
+\end{equation}
+
+Igualando este resultado con el miembro derecho de la Ecuación~\eqref{eq:Sr_despejada} y sustituyendo la constante de Carter ecuatorial~\eqref{eq:carter_ecuatorial}, se obtiene la ecuación diferencial radial paso a paso \citep{1403.5234v2, s10052-021-09180-y}:
+\begin{equation}
+    r^4 \left( \frac{dr}{d\lambda} \right)^2 = \mathcal{R}(r)
+    \label{eq:eq_radial_paso_paso}
+\end{equation}
+donde el **potencial efectivo radial** $\mathcal{R}(r)$ queda definido exactamente por \citep{1403.5234v2, s10052-021-09180-y}:
+\begin{equation}
+    \mathcal{R}(r) = \left[ (r^2 + a^2)\frac{E}{c} - a L_z \right]^2 - \Delta(r) \left( L_z - \frac{a E}{c} \right)^2
+    \label{eq:potencial_R_demostrado}
+\end{equation}
+
+% ==============================================================================
+% SECCIÓN: DEDUCCIÓN DE LA FUNCIÓN R^2(r) DE KOBIALKO Y PARÁMETROS DE IMPACTO (Phi, Q)
+% ==============================================================================
+
+\section{Deducción a partir de la función \texorpdfstring{$R^2(r)$}{R^2(r)} de Kobialko y los parámetros de impacto \texorpdfstring{$(\Phi, \mathcal{Q})$}{(\Phi, \mathcal{Q})}}
+
+Para describir la dinámica geodésica de fotones ($m=0$) en el espaciotiempo de Kerr-Newman, el espacio de fases se parametriza mediante las constantes de movimiento conservadas: energía $E$, momento angular azimutal $L_z$ y la constante de Carter $\mathcal{K}$ \citep{1403.5234v2, pdfcoffee.com_chandrasekhar}. Definimos los dos \textbf{parámetros de impacto reducidos} con dimensiones de longitud y área en el Sistema Internacional (SI) como \citep{Grenzebach2014, Kobialko2024}:
+\begin{equation}
+    \Phi \equiv \frac{c L_z}{E} \quad [\text{m}]
+    \label{eq:def_Phi_SI}
+\end{equation}
+\begin{equation}
+    \mathcal{Q} \equiv \frac{c^2 \mathcal{K}}{E^2} \quad [\text{m}^2]
+    \label{eq:def_Q_SI}
+\end{equation}
+
+Dividiendo el potencial radial efectivo de Hamilton-Jacobi $\mathcal{R}(r)$ entre $E^2/c^2$, obtenemos la función adimensional escalada de Kobialko $R^2(r)$ para la métrica de Kerr-Newman \citep{perturbaciones_en_bh, Kobialko2024}:
+\begin{equation}
+    R^2(r) \equiv \frac{c^2 \mathcal{R}(r)}{E^2} = \left( r^2 + a^2 - a \Phi \right)^2 - \Delta(r) \left[ \mathcal{Q} + (\Phi - a)^2 \right]
+    \label{eq:kobialko_R2_SI_general}
+\end{equation}
+Sustituyendo la función del horizonte $\Delta(r) = r^2 - 2 r_g r + a^2 + r_g^2 \delta$, donde $r_g \equiv \frac{GM}{c^2}$ es el radio gravitacional y $\delta \equiv \frac{Q^2}{4\pi\varepsilon_0 G M^2} \ll 1$ es el parámetro adimensional de carga eléctrica débil, la función $R^2(r)$ se expande como:
+\begin{equation}
+    R^2(r) = \left( r^2 + a^2 - a \Phi \right)^2 - \left( r^2 - 2 r_g r + a^2 + r_g^2 \delta \right) \left[ \mathcal{Q} + (\Phi - a)^2 \right]
+    \label{eq:kobialko_R2_expandida_general}
+\end{equation}
+
+Las condiciones matemáticas analíticas para la existencia de una órbita fotónica esférica inestable (esfera de fotones) en el radio $r_{\mathrm{ph}}$ exigen la anulación simultánea del potencial y de su primera derivada radial \citep{prueba_bh_cargado, dinamica_de_photones_bh_cargado, perturbaciones_en_bh}:
+\begin{equation}
+    \text{Condición 1:} \quad R^2(r_{\mathrm{ph}}) = 0
+    \label{eq:cond1_R2}
+\end{equation}
+\begin{equation}
+    \text{Condición 2:} \quad \left. \frac{d(R^2)}{dr} \right|_{r_{\mathrm{ph}}} = 0
+    \label{eq:cond2_R2}
+\end{equation}
+
+Al resolver el sistema de ecuaciones~(\ref{eq:cond1_R2})--(\ref{eq:cond2_R2}), se obtienen los valores críticos de los parámetros de impacto $(\Phi_c, \mathcal{Q}_c)$ que parametrizan la frontera de la sombra celeste \citep{1403.5234v2, Grenzebach2014}:
+\begin{equation}
+    \Phi_c(r_{\mathrm{ph}}) = \frac{(r_{\mathrm{ph}}^2 + a^2) \Delta'(r_{\mathrm{ph}}) - 4 r_{\mathrm{ph}} \Delta(r_{\mathrm{ph}})}{a \, \Delta'(r_{\mathrm{ph}})}
+    \label{eq:Phi_critico}
+\end{equation}
+\begin{equation}
+    \mathcal{Q}_c(r_{\mathrm{ph}}) = \frac{16 r_{\mathrm{ph}}^2 \Delta(r_{\mathrm{ph}}) - \left[ \Delta'(r_{\mathrm{ph}}) (r_{\mathrm{ph}}^2 - a^2) - 4 r_{\mathrm{ph}} \Delta(r_{\mathrm{ph}}) \right]^2}{a^2 [\Delta'(r_{\mathrm{ph}})]^2}
+    \label{eq:Q_critico}
+\end{equation}
+donde $\Delta'(r) \equiv \frac{d\Delta}{dr} = 2r - 2r_g$. Se define el \textbf{parámetro de impacto crítico combinado al cuadrado} $b_c^2(r_{\mathrm{ph}})$ mediante la suma cuadrática \citep{perturbaciones_en_bh, Kobialko2024}:
+\begin{equation}
+    b_c^2(r_{\mathrm{ph}}) \equiv \mathcal{Q}_c(r_{\mathrm{ph}}) + \Phi_c^2(r_{\mathrm{ph}}) = \frac{16 r_{\mathrm{ph}}^2 \Delta(r_{\mathrm{ph}})}{[\Delta'(r_{\mathrm{ph}})]^2}
+    \label{eq:bc2_combinado_def}
+\end{equation}
+
+\subsection{Deducción detallada en el límite estático y expansión de Kobialko}
+
+En el límite esféricamente simétrico sin rotación ($a \to 0$, métrica de Reissner-Nordström), la función de horizonte es $\Delta(r) = r^2 - 2 r_g r + r_g^2 \delta$ y su derivada resulta $\Delta'(r) = 2(r - r_g)$. Sustituyendo esta derivada en la ec.~(\ref{eq:bc2_combinado_def}):
+\begin{equation}
+    b_c^2(r_{\mathrm{ph}}) = \frac{16 r_{\mathrm{ph}}^2 \Delta(r_{\mathrm{ph}})}{[2(r_{\mathrm{ph}} - r_g)]^2} = \frac{4 r_{\mathrm{ph}}^2 \Delta(r_{\mathrm{ph}})}{(r_{\mathrm{ph}} - r_g)^2}
+    \label{eq:bc2_limite_estatico_1}
+\end{equation}
+Por otro lado, de la Condición 1 ec.~(\ref{eq:cond1_R2}) con $a=0$, tenemos $R^2(r_{\mathrm{ph}}) = r_{\mathrm{ph}}^4 - \Delta(r_{\mathrm{ph}}) b_c^2 = 0$, de donde:
+\begin{equation}
+    b_c^2(r_{\mathrm{ph}}) = \frac{r_{\mathrm{ph}}^4}{\Delta(r_{\mathrm{ph}})}
+    \label{eq:bc2_limite_estatico_2}
+\end{equation}
+
+Igualando la ec.~(\ref{eq:bc2_limite_estatico_1}) con la ec.~(\ref{eq:bc2_limite_estatico_2}):
+\begin{equation}
+    \frac{r_{\mathrm{ph}}^4}{\Delta(r_{\mathrm{ph}})} = \frac{4 r_{\mathrm{ph}}^2 \Delta(r_{\mathrm{ph}})}{(r_{\mathrm{ph}} - r_g)^2}
+    \label{eq:igualdad_bc2}
+\end{equation}
+Simplificando $r_{\mathrm{ph}}^2 \neq 0$ y tomando la raíz cuadrada:
+\begin{equation}
+    r_{\mathrm{ph}} (r_{\mathrm{ph}} - r_g) = 2 \Delta(r_{\mathrm{ph}})
+    \label{eq:ec_rph_paso1}
+\end{equation}
+Sustituyendo la expresión explícita de $\Delta(r_{\mathrm{ph}}) = r_{\mathrm{ph}}^2 - 2 r_g r_{\text{ph}} + r_g^2 \delta$:
+\begin{equation}
+    r_{\mathrm{ph}}^2 - r_g r_{\mathrm{ph}} = 2 \left( r_{\mathrm{ph}}^2 - 2 r_g r_{\mathrm{ph}} + r_g^2 \delta \right)
+    \label{eq:ec_rph_paso2}
+\end{equation}
+Reagrupando los términos algebraicos se obtiene la ecuación cuadrática fundamental para el radio de la esfera de fotones:
+\begin{equation}
+    r_{\mathrm{ph}}^2 - 3 r_g r_{\mathrm{ph}} + 2 r_g^2 \delta = 0
+    \label{eq:cuadratica_rph}
+\end{equation}
+
+Resolviendo de forma exacta la ec.~(\ref{eq:cuadratica_rph}) mediante la fórmula binomial para la raíz inestable exterior:
+\begin{equation}
+    r_{\mathrm{ph}}(\delta) = \frac{3 r_g + \sqrt{9 r_g^2 - 8 r_g^2 \delta}}{2} = \frac{3 r_g}{2} \left( 1 + \sqrt{1 - \frac{8}{9}\delta} \right)
+    \label{eq:rph_exacto}
+\end{equation}
+Realizamos la expansión en serie de Taylor de la función binomia $\sqrt{1 - x} = 1 - \frac{1}{2}x - \frac{1}{8}x^2 - \dots$ tomando $x = \frac{8}{9}\delta \ll 1$ \citep{prueba_bh_cargado}:
+\begin{equation}
+    \sqrt{1 - \frac{8}{9}\delta} = 1 - \frac{1}{2}\left(\frac{8}{9}\delta\right) - \frac{1}{8}\left(\frac{8}{9}\delta\right)^2 - \mathcal{O}(\delta^3)
+    \label{eq:taylor_paso1}
+\end{equation}
+\begin{equation}
+    \sqrt{1 - \frac{8}{9}\delta} = 1 - \frac{4}{9}\delta - \frac{8}{81}\delta^2 - \mathcal{O}(\delta^3)
+    \label{eq:taylor_raiz}
+\end{equation}
+Sustituyendo la ec.~(\ref{eq:taylor_raiz}) en la ec.~(\ref{eq:rph_exacto}):
+\begin{equation}
+    r_{\mathrm{ph}}(\delta) = \frac{3 r_g}{2} \left( 2 - \frac{4}{9}\delta - \frac{8}{81}\delta^2 \right) = 3 r_g \left( 1 - \frac{2}{9}\delta - \frac{4}{81}\delta^2 + \mathcal{O}(\delta^3) \right)
+    \label{eq:rph_perturbado_SI}
+\end{equation}
+
+Para calcular la expansión del parámetro de impacto crítico al cuadrado $b_c^2(\delta)$, notamos que de la ec.~(\ref{eq:cuadratica_rph}) se cumple la identidad $\Delta(r_{\mathrm{ph}}) = r_g (r_{\mathrm{ph}} - r_g \delta)$. Sustituyendo esto en la ec.~(\ref{eq:bc2_limite_estatico_2}):
+\begin{equation}
+    b_c^2(\delta) = \frac{r_{\mathrm{ph}}^3(\delta)}{r_g \left( 1 - \frac{r_g \delta}{r_{\mathrm{ph}}} \right)}
+    \label{eq:bc2_relacion_simplificada}
+\end{equation}
+
+Elevando la ec.~(\ref{eq:rph_perturbado_SI}) al cubo:
+\begin{equation}
+    r_{\mathrm{ph}}^3(\delta) = 27 r_g^3 \left( 1 - \frac{2}{9}\delta - \frac{4}{81}\delta^2 \right)^3 = 27 r_g^3 \left( 1 - \frac{2}{3}\delta + \mathcal{O}(\delta^3) \right)
+    \label{eq:rph_cubo}
+\end{equation}
+Por su parte, el denominador se expande como:
+\begin{equation}
+    1 - \frac{r_g \delta}{r_{\mathrm{ph}}} = 1 - \frac{\delta}{3\left(1 - \frac{2}{9}\delta\right)} = 1 - \frac{1}{3}\delta - \frac{2}{27}\delta^2 + \mathcal{O}(\delta^3)
+    \label{eq:denominador_exp}
+\end{equation}
+
+Dividiendo la ec.~(\ref{eq:rph_cubo}) entre la ec.~(\ref{eq:denominador_exp}):
+\begin{align}
+    b_c^2(\delta) &= \frac{27 r_g^2 \left( 1 - \frac{2}{3}\delta \right)}{1 - \frac{1}{3}\delta - \frac{2}{27}\delta^2} = 27 r_g^2 \left( 1 - \frac{2}{3}\delta \right) \left( 1 + \frac{1}{3}\delta + \frac{5}{27}\delta^2 \right) \nonumber \\[0.2cm]
+    &= 27 r_g^2 \left[ 1 + \left( \frac{1}{3} - \frac{2}{3} \right)\delta + \left( \frac{5}{27} - \frac{2}{9} \right)\delta^2 + \mathcal{O}(\delta^3) \right]
+\end{align}
+Obteniendo finalmente la célebre **expansión analítica de Kobialko** para el parámetro de impacto crítico al cuadrado en unidades SI \citep{perturbaciones_en_bh, Kobialko2024}:
+\begin{equation}
+    b_c^2(\delta) = 27 r_g^2 \left( 1 - \frac{1}{3}\delta - \frac{1}{27}\delta^2 + \mathcal{O}(\delta^3) \right)
+    \label{eq:bc2_kobialko_SI}
+\end{equation}
+donde el coeficiente de segundo orden $D = 1/27$ constituye la **firma unívoca de electrovacío** del espaciotiempo cargado frente a soluciones alternativas de gravedad modificada.

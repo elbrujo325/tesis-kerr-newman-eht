@@ -1,0 +1,17 @@
+\chapter{RESULTADOS NUMÉRICOS Y CONTRASTE EXPERIMENTAL CON EL EHT}
+
+\section{Simulación geodésica mediante Runge-Kutta de 4to orden (RK4)}
+Se implementa un algoritmo en Python para integrar numéricamente las geodésicas nulas usando RK4 \citep{Geod_sicas_en_la_m_trica_de_Schwarzschild__una_soluci_n_num_rica, TFG-G7513}, resolviendo las ecuaciones de movimiento derivadas en el Capítulo III.
+
+\section{Coordenadas celestes \texorpdfstring{$(\alpha, \beta)$}{(alpha, beta)} e intervalo angular en \texorpdfstring{$\mu\text{as}$}{microsegundos de arco}}
+Las coordenadas celestes en el plano del observador a distancia $D$ e inclinación $\theta_o$ son \citep{1403.5234v2, 2406.09498v1}:
+\begin{equation}
+    \alpha = -\frac{b_c}{\sin\theta_o}, \quad \beta = \pm \sqrt{q_c + a^2 \cos^2\theta_o - b_c^2 \cot^2\theta_o}
+\end{equation}
+El diámetro angular observado en microsegundos de arco ($\mu as$) viene dado por \citep{Broderick_2022_ApJ_927_6, Reproducibility_of_the_First_Image_of_a_Black_Hole_in_the_Galaxy_M87_From_the_Event_Horizon_Telescope_Collaboration}:
+\begin{equation}
+    \theta_{shadow} = \frac{2 b_c GM}{c^2 D} \text{ rad}
+\end{equation}
+
+\section{Contraste con los datos del EHT para M87* y Sgr A*}
+Para M87* ($M \approx 6.5 \times 10^9 M_\odot$, $D \approx 16.8 \text{ Mpc}$), $1 r_g \approx 3.81 \, \mu as$ \citep{Broderick_2022_ApJ_927_6, EHT_Paper1}. El EHT midió un diámetro de $42 \pm 3 \, \mu as$ \citep{EHT_Paper1}. La diferencia de $0.74 \, \mu as$ predicha por el término $D\delta^2$ estará al alcance de las líneas de base espaciales del ngEHT \citep{Measuring_Photon_Rings_with_the_ngEHT}.

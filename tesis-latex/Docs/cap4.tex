@@ -1,0 +1,143 @@
+%=============================
+%  CUARTO CAPITULO
+%=============================
+\chapter{ANÁLISIS PERTURBATIVO EN KERR-NEWMAN Y ESTABILIDAD DE LYAPUNOV}
+
+\section{Potencial radial efectivo \texorpdfstring{$\mathcal{R}(r)$}{R(r)} en el plano ecuatorial}
+Consideramos el espaciotiempo estacionario y axialmente simétrico de Kerr-Newman en coordenadas de Boyer-Lindquist $(t, r, \theta, \phi)$ expresado en el Sistema Internacional de Unidades (SI) con la signatura métrica de Minkowski $(+,-,-,-)$ \citep{Carroll, Hobson}:
+\begin{equation}
+    \Delta(r) = r^2 - 2 r_g r + a^2 + r_Q^2
+    \label{eq:delta_KN_SI}
+\end{equation}
+donde $r_g \equiv \frac{GM}{c^2}$ es el radio gravitacional, $a \equiv \frac{J}{Mc}$ es el parámetro de espín por unidad de masa y $r_Q^2 \equiv \frac{G Q^2}{4\pi\varepsilon_0 c^4} = 2 r_g^2 \delta$, siendo $\delta \equiv \frac{Q^2}{4\pi\varepsilon_0 G M^2} \ll 1$ el parámetro adimensional de carga eléctrica débil \citep{prueba_bh_cargado}.
+
+Para geodésicas nulas ($ds^2 = 0$) restringidas al plano ecuatorial ($\theta = \pi/2$, $p_\theta = 0$), la constante de separación de Carter adopta la forma $\mathcal{K} = (L_z - a E/c)^2$ \citep{Chandrasekhar, 1403.5234v2}. La función de la acción de Hamilton-Jacobi $S = -E t + L_z \phi + S_r(r)$ conduce a la ecuación diferencial radial exacta \citep{Carroll, Hobson}:
+\begin{equation}
+    r^4 \left( \frac{dr}{d\lambda} \right)^2 = \mathcal{R}(r)
+    \label{eq:partida_KN_R}
+\end{equation}
+donde $\lambda$ es el parámetro afín del fotón y el potencial radial efectivo $\mathcal{R}(r)$ está dado explícitamente por \citep{Chandrasekhar, 1403.5234v2}:
+\begin{equation}
+    \mathcal{R}(r) = \left[ E (r^2 + a^2) - a L_z c \right]^2 - \Delta(r) \left[ (L_z c - a E)^2 \right]
+    \label{eq:potencial_carter_KN}
+\end{equation}
+
+Definiendo el parámetro de impacto ecuatorial $b \equiv \frac{L_z c}{E}$ (con dimensión de longitud), reescribimos el potencial radial normalizado por $E^2$ \citep{Sneppen, chaos_fractals_photon_ring}:
+\begin{equation}
+    \frac{\mathcal{R}(r)}{E^2} = \left( r^2 + a^2 - a b \right)^2 - \left( r^2 - 2 r_g r + a^2 + 2 r_g^2 \delta \right) (b - a)^2
+    \label{eq:potencial_R_parametro_b}
+\end{equation}
+
+\section{Condiciones de equilibrio y expansión perturbativa en carga débil}
+Las órbitas circulares inestables de fotones que forman la esfera (o banda de lentes) de fotones de radio crítico $r_{ph}$ en el plano ecuatorial cumplen las dos condiciones extremales de equilibrio \citep{fhoton_bh, prueba_bh_cargado}:
+\begin{equation}
+    \mathcal{R}(r_{ph}) = 0, \quad \left. \frac{d\mathcal{R}}{dr} \right|_{r_{ph}} = 0
+    \label{eq:condiciones_equilibrio_KN}
+\end{equation}
+
+En el régimen de carga eléctrica débil ($\delta \ll 1$), proponemos una expansión en serie de potencias regulares para el radio crítico $r_{ph}$ y para el parámetro de impacto crítico $b_c$ alrededor de la solución no perturbada de Kerr ($\delta = 0$) \citep{Ali-H.-Nayfeh-Introduction-to-perturbation-techniques-1993-Wiley-VCH, TFG-G7513}:
+\begin{align}
+    r_{ph}(a, \delta) &= r_{ph}^{(0)}(a) + \delta \, r_{ph}^{(1)}(a) + \delta^2 \, r_{ph}^{(2)}(a) + \mathcal{O}(\delta^3) \label{eq:expansion_rph} \\
+    b_c(a, \delta) &= b_c^{(0)}(a) + \delta \, b_c^{(1)}(a) + \delta^2 \, b_c^{(2)}(a) + \mathcal{O}(\delta^3) \label{eq:expansion_bc}
+\end{align}
+
+El radio de fotones no perturbado de Kerr $r_{ph}^{(0)}(a)$ para órbitas ecuatoriales progradas ($b > 0$) y retrógradas ($b < 0$) viene dado por la expresión analítica cerrada \citep{Hobson, Achour_2025_J._Cosmol._Astropart._Phys._2025_012}:
+\begin{equation}
+    r_{ph}^{(0)}(a) = 2 r_g \left\{ 1 + \cos \left[ \frac{2}{3} \arccos \left( \mp \frac{a}{r_g} \right) \right] \right\}
+    \label{eq:rph_kerr_exacto}
+\end{equation}
+
+Sustituyendo las expansiones~(\ref{eq:expansion_rph}) y~(\ref{eq:expansion_bc}) en las condiciones de equilibrio~(\ref{eq:condiciones_equilibrio_KN}) e igualando términos de orden $\mathcal{O}(\delta^1)$, obtenemos la corrección de primer orden al radio crítico provocada por la carga:
+\begin{equation}
+    r_{ph}^{(1)}(a) = -\frac{2 r_g^2 \left( b_c^{(0)} - a \right)^2}{4 r_{ph}^{(0)} \left( r_{ph}^{(0)2} + a^2 - a b_c^{(0)} \right) - 2 \left( r_{ph}^{(0)} - r_g \right) \left( b_c^{(0)} - a \right)^2} < 0
+    \label{eq:rph_primer_orden_KN}
+\end{equation}
+La Ecuación~(\ref{eq:rph_primer_orden_KN}) demuestra rigurosamente que la presencia de una carga eléctrica residual $Q$ disminuye el radio de la esfera de fotones respecto al caso neutro de Kerr ($r_{ph} < r_{ph}^{(0)}$), debido a la atracción electrogravitacional adicional \citep{Heydarzade_2024}.
+
+\section{Deducción del exponente de Lyapunov y oscilador inestable}
+Para determinar la tasa de divergencia de las trayectorias fotónicas vecinas, introducimos una pequeña perturbación radial $\epsilon(\lambda) \equiv r(\lambda) - r_{ph}$ alrededor de la órbita de equilibrio inestable \citep{Sneppen, chaos_fractals_photon_ring}. Expandimos el potencial radial $\mathcal{R}(r)$ en serie de Taylor hasta segundo orden:
+\begin{equation}
+    \mathcal{R}(r) \approx \mathcal{R}(r_{ph}) + \left.\frac{d\mathcal{R}}{dr}\right|_{r_{ph}} \epsilon + \frac{1}{2} \left.\frac{d^2\mathcal{R}}{dr^2}\right|_{r_{ph}} \epsilon^2 = \frac{1}{2} \left.\frac{d^2\mathcal{R}}{dr^2}\right|_{r_{ph}} \epsilon^2
+    \label{eq:R_segundo_orden_KN}
+\end{equation}
+
+Sustituyendo la Ecuación~(\ref{eq:R_segundo_orden_KN}) en la ecuación de movimiento radial~(\ref{eq:partida_KN_R}) y tomando la raíz cuadrada:
+\begin{equation}
+    \frac{d\epsilon}{d\lambda} = \pm \frac{\sqrt{\left.\frac{d^2\mathcal{R}}{dr^2}\right|_{r_{ph}}}}{\sqrt{2} r_{ph}^2} \epsilon(\lambda)
+    \label{eq:d_epsilon_lambda_KN}
+\end{equation}
+
+Derivando respecto al parámetro afín $\lambda$, obtenemos la ecuación diferencial del **oscilador armónico inestable de Lyapunov** \citep{Sneppen, 2406.09498v1}:
+\begin{equation}
+    \frac{d^2\epsilon}{d\lambda^2} - \gamma_\lambda^2 \epsilon(\lambda) = 0
+    \label{eq:oscilador_lyapunov_SI_KN}
+\end{equation}
+donde el exponente de Lyapunov afín $\gamma_\lambda$ está definido por:
+\begin{equation}
+    \gamma_\lambda(a, \delta) \equiv \frac{\sqrt{\left.\frac{d^2\mathcal{R}}{dr^2}\right|_{r_{ph}}}}{\sqrt{2} r_{ph}^2}
+    \label{eq:def_gamma_lambda_KN}
+\end{equation}
+
+\subsection{Transformación al exponente orbital \texorpdfstring{$\gamma_\phi$}{gamma\_phi}}
+Debido al acoplamiento de rotación en la métrica no diagonal de Kerr-Newman, la velocidad angular azimutal en el radio de la esfera de fotones $\left.\frac{d\phi}{d\lambda}\right|_{r_{ph}}$ se obtiene de las ecuaciones geodésicas \citep{Carroll, Chandrasekhar}:
+\begin{equation}
+    \left.\frac{d\phi}{d\lambda}\right|_{r_{ph}} = \frac{E}{r_{ph}^2 \Delta(r_{ph})} \left[ a \left( r_{ph}^2 + a^2 - a b_c \right) + \Delta(r_{ph}) \left( b_c - a \right) \right]
+    \label{eq:dphi_dlambda_KN}
+\end{equation}
+
+Aplicando la regla de la cadena $\frac{d\epsilon}{d\lambda} = \frac{d\epsilon}{d\phi} \left( \frac{d\phi}{d\lambda} \right)$, la EDO orbital toma la forma \citep{Sneppen}:
+\begin{equation}
+    \frac{d^2\epsilon}{d\phi^2} - \gamma_\phi^2 \epsilon(\phi) = 0
+    \label{eq:oscilador_orbital_phi_KN}
+\end{equation}
+donde el **exponente de Lyapunov orbital por radián** $\gamma_\phi(a, \delta)$ en el espaciotiempo de Kerr-Newman se expresa analíticamente como:
+\begin{equation}
+    \gamma_\phi(a, \delta) \equiv \frac{\gamma_\lambda}{\left.\frac{d\phi}{d\lambda}\right|_{r_{ph}}} = \frac{\Delta(r_{ph}) \sqrt{\left.\frac{d^2\mathcal{R}}{dr^2}\right|_{r_{ph}}}}{\sqrt{2} E \left[ a \left( r_{ph}^2 + a^2 - a b_c \right) + \Delta(r_{ph}) \left( b_c - a \right) \right]}
+    \label{eq:def_gamma_phi_KN_exacto}
+\end{equation}
+
+Para fotones progrados con alto espín ($a \to r_g$), el arrastre de marcos reduce el exponente de Lyapunov orbital a $\gamma_\phi < 1$, lo que atenúa la divergencia radial y atenúa la atenuación de Sneppen ($f_{thin} = e^{-2\pi\gamma_\phi} \gg e^{-2\pi}$), fundamentando el ensanchamiento del subanillo $n=1$ y su detectabilidad interferométrica por el ngEHT y BHEX \citep{2406.09498v1}.
+
+\section{Deducción paso a paso del Exponente de Lyapunov \texorpdfstring{$\gamma$}{gamma}}
+Deducimos ahora de manera rigurosa la ecuación del exponente de Lyapunov a partir del potencial radial.
+Partimos de la Ecuación~(\ref{eq:eq_radial_R}):
+\begin{equation}
+    r^4 \left(\frac{dr}{d\lambda}\right)^2 = \mathcal{R}(r)
+    \label{eq:partida_lyapunov}
+\end{equation}
+Realizamos el desarrollo en serie de Taylor del potencial $\mathcal{R}(r)$ alrededor del radio crítico $r_{ph}$:
+\begin{equation}
+    \mathcal{R}(r) = \mathcal{R}(r_{ph}) + \left.\frac{d\mathcal{R}}{dr}\right|_{r_{ph}} (r - r_{ph}) + \frac{1}{2}\left.\frac{d^2\mathcal{R}}{dr^2}\right|_{r_{ph}} (r - r_{ph})^2 + \mathcal{O}\left((r - r_{ph})^3\right)
+    \label{eq:taylor_R}
+\end{equation}
+Sustituyendo la Ecuación~(\ref{eq:cond1_R2}) ($\mathcal{R}(r_{ph}) = 0$) y la Ecuación~(\ref{eq:cond2_R2}) ($\left.\frac{d\mathcal{R}}{dr}\right|_{r_{ph}} = 0$) en la Ecuación~(\ref{eq:taylor_R}), los dos primeros términos se anulan exactamente, dejando:
+\begin{equation}
+    \mathcal{R}(r) \approx \frac{1}{2}\left.\frac{d^2\mathcal{R}}{dr^2}\right|_{r_{ph}} (r - r_{ph})^2
+    \label{eq:R_segundo_orden}
+\end{equation}
+Sustituyendo la Ecuación~(\ref{eq:R_segundo_orden}) en la Ecuación~(\ref{eq:partida_lyapunov}):
+\begin{equation}
+    r_{ph}^4 \left(\frac{dr}{d\lambda}\right)^2 = \frac{1}{2}\left.\frac{d^2\mathcal{R}}{dr^2}\right|_{r_{ph}} (r - r_{ph})^2
+    \label{eq:radial_linealizada}
+\end{equation}
+Definimos la pequeña desviación radial $\epsilon(\lambda) \equiv r(\lambda) - r_{ph}$. Tomando la raíz cuadrada en la Ecuación~(\ref{eq:radial_linealizada}):
+\begin{equation}
+    \frac{d\epsilon}{d\lambda} = \pm \frac{\sqrt{\left.\frac{d^2\mathcal{R}}{dr^2}\right|_{r_{ph}}}}{\sqrt{2} r_{ph}^2} \epsilon(\lambda)
+    \label{eq:d_epsilon_lambda}
+\end{equation}
+Derivando la Ecuación~(\ref{eq:d_epsilon_lambda}) respecto al parámetro afín $\lambda$, obtenemos la ecuación del oscilador inestable paso a paso:
+\begin{equation}
+    \frac{d^2\epsilon}{d\lambda^2} - \gamma_\lambda^2 \epsilon(\lambda) = 0
+    \label{eq:oscilador_inestable_SI}
+\end{equation}
+donde el exponente de Lyapunov respecto al parámetro afín se define exactamente como:
+\begin{equation}
+    \gamma_\lambda \equiv \frac{\sqrt{\left.\frac{d^2\mathcal{R}}{dr^2}\right|_{r_{ph}}}}{\sqrt{2} r_{ph}^2}
+    \label{eq:def_lyapunov_SI}
+\end{equation}
+La solución general de la Ecuación~(\ref{eq:oscilador_inestable_SI}) es:
+\begin{equation}
+    \epsilon(\lambda) = C_1 e^{\gamma_\lambda \lambda} + C_2 e^{-\gamma_\lambda \lambda}
+    \label{eq:solucion_lyapunov}
+\end{equation}
+Esto demuestra analíticamente que la presencia de la raíz exponencial $e^{\gamma_\lambda \lambda}$ en la Ecuación~(\ref{eq:solucion_lyapunov}) impulsa la divergencia de las trayectorias vecinas.

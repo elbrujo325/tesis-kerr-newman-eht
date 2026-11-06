@@ -1,0 +1,208 @@
+%==================================================
+% Plantilla elaborado por Dr. David Pareja Quispe
+% e-mail: dparejaq@unmsm.edu.pe
+% No eliminar los créditos del Autor
+%================================================
+\documentclass[twoside,onehalfspace]{./Portada/unmsmtesis}
+
+%=========================================================
+% ADICIONAR LINEAS ABAJO OTROS PAQUETES SI ES NECESARIO
+%=========================================================
+\graphicspath{{Figuras/}}%Ruta de las figuras
+\usepackage{blindtext}
+
+%==========================================
+%    Fuente
+%==========================================
+\newcommand*{\captionsource}[2]{%
+  \caption[{#1}]{#1}\smallskip\par
+  \textbf{Fuente:} #2\par}
+
+
+%===========================================
+% Segunda opción para la fuente
+%==========================================
+%\usepackage{copyrightbox} 
+%\makeatletter
+%\renewcommand{\CRB@setcopyrightfont}{%
+%\footnotesize  
+%\color{black} %Comentar si desea en el color por defecto
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% AQUÍ INICIA EL DOCUMENTO %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\setlength {\marginparwidth}{2cm} 
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CARGANDO LA PORTADA DEL DOCUMENTO
+\input{Portada/portada.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}\null\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% REIMPRESIÓN DE LA PORTADA NUEVAMENTE
+%\input{Portada/portada.tex}
+
+%================================================
+%ESPACIAMIENTO ENTRE LINEAS EN TODO EL DOCUMENTO
+%================================================
+\onehalfspacing 
+\pagenumbering{roman}
+
+%=======================================================================================
+%  COMENTE LAS LINEAS (PARTES DEL DOCUMENTO) QUE NO DESEA QUE APAREZCA EN EL ÍNDICE GENERAL
+%=======================================================================================
+\include{./Docs/epigrafe} %% OPCIONAL
+\include{./Docs/dedicatoria} %% OPCIONAL
+\include{./Docs/agradecimientos} %% OPCIONAL
+\include{./Docs/resumen} %% OBLIGATORIO 
+\include{./Docs/abstract} %% OBLIGATORIO
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%             ÍNDICE GENERAL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+%\pagebreak
+\newpage
+%=================================================
+%%%%%%%%%%%%%%%%%%% LISTA DE FIGURAS  %%%%%%%%%%%%
+%=================================================
+\listoffigures
+\addcontentsline{toc}{chapter}{\listfigurename} % OBLIGATORIO SI HAY MAS DE 3 FIGURAS
+\null\newpage
+%\thispagestyle{empty}\null\newpage
+%=========================================
+%%%%%%%%%%%%%%%%LISTA DE TABLAS%%%%%%%%%%%
+%=========================================
+\listoftables
+\addcontentsline{toc}{chapter}{\listtablename} % OBLIGATORIO SI HAY MAS DE 3 TABLAS
+\null\newpage
+%\thispagestyle{empty}\null\newpage
+
+%=========================================
+% LISTA DE SIMBOLOS Y SIGLAS ES OPCIONAL
+%=========================================
+\include{./Docs/simbolos.tex} %% OPCIONAL
+\include{./Docs/siglas} %% OPCIONAL
+
+\cleardoublepage % Asegura que el Capítulo 1 comience en página impar
+
+\pagenumbering{arabic}
+\justifying
+
+%================================================
+% AQUÍ INICIA LOS CAPÍTULOS DE LA TESIS
+% Adicione los capítulos que crea conveniente 
+%================================================
+
+\include{./Docs/cap1} %% 1o capítulo
+\include{./Docs/cap2} %% 2o capítulo
+\include{./Docs/cap3} %% 3o capítulo
+\include{./Docs/cap4} %% 4o capítulo
+\include{./Docs/cap5} %% 5o capítulo
+\include{./Docs/cap6} %% 6o capítulo
+\include{./Docs/cap7} %% 7o capítulo
+\include{./Docs/conclusiones} %% conclusiones capítulo
+
+\newpage
+% =========================================================================
+% REFERENCIAS BIBLIOGRÁFICAS (APA 7.ª Edición - FCF UNMSM)
+% =========================================================================
+\newpage
+\chapter*{Referencias Bibliográficas}
+\addcontentsline{toc}{chapter}{Referencias Bibliográficas}
+
+\begin{thebibliography}{99}
+
+\bibitem[Alfaro Sotil(2025)]{prueba_bh_cargado} Alfaro Sotil, H. P. (2025). \textit{Análisis perturbativo de las órbitas de fotones y la estabilidad de la esfera de fotones en agujeros negros débilmente cargados} [Informe de Avance de Tesis, Universidad Nacional Mayor de San Marcos]. Repositorio Institucional UNMSM.
+
+\bibitem[Ben Achour et al.(2025)]{Achour_2025_J._Cosmol._Astropart._Phys._2025_012} Ben Achour, J., Gourgoulhon, É., y Roussille, H. (2025). Black hole photon ring beyond General Relativity: An integrable parametrization. \textit{Journal of Cosmology and Astroparticle Physics}, \textit{2025}(10), Artículo 012. https://doi.org/10.1088/1475-7516/2025/10/012
+
+\bibitem[Berens et al.(2024)]{chaos_fractals_photon_ring} Berens, R., Galison, P., Gravely, T., Lupsasca, A., y Stein, L. C. (2024). Chaos and fractals of the black hole photon ring. \textit{Classical and Quantum Gravity}, \textit{41}(10), Artículo 105001. https://doi.org/10.1088/1361-6382/ad333e
+\bibitem[Berens et al.(2024)]{Berens2024} Berens, R., Galison, P., Gravely, T., Lupsasca, A., y Stein, L. C. (2024). Chaos and fractals of the black hole photon ring. \textit{Classical and Quantum Gravity}, \textit{41}(10), Artículo 105001. https://doi.org/10.1088/1361-6382/ad333e
+
+\bibitem[Broderick et al.(2022)]{Broderick_2022_ApJ_927_6} Broderick, A. E., Tiede, P., Pesce, D. W., y Gold, R. (2022). Measuring photon rings with the Event Horizon Telescope. \textit{The Astrophysical Journal}, \textit{927}(1), Artículo 6. https://doi.org/10.3847/1538-4357/ac426a
+
+\bibitem[Carnero Morán(2025)]{TFG-G7513} Carnero Morán, P. (2025). \textit{Métodos de perturbación} [Trabajo de Fin de Grado, Universidad de Valladolid]. Repositorio Documental UVa.
+\bibitem[Carnero Morán(2025)]{CarneroMoran2025} Carnero Morán, P. (2025). \textit{Métodos de perturbación} [Trabajo de Fin de Grado, Universidad de Valladolid]. Repositorio Documental UVa.
+
+\bibitem[Carroll(2003)]{Sean_Carroll_Spacetime} Carroll, S. M. (2003). \textit{Spacetime and geometry: An introduction to General Relativity}. Pearson.
+
+\bibitem[Chakraborty y Sarkar(2019)]{fhoton_bh} Chakraborty, S., y Sarkar, S. (2019). Photon sphere evolution in dynamical black hole spacetimes. \textit{Physical Review D}, \textit{100}(6), Artículo 064010. https://doi.org/10.1103/PhysRevD.100.064010
+
+\bibitem[Chandrasekhar(1998)]{pdfcoffee.com_chandrasekhar} Chandrasekhar, S. (1998). \textit{The mathematical theory of black holes}. Oxford University Press.
+\bibitem[Chandrasekhar(1983)]{Chandrasekhar1983} Chandrasekhar, S. (1983). \textit{The mathematical theory of black holes}. Oxford University Press.
+
+\bibitem[Dias et al.(2015)]{PhysRevLett.114.151101} Dias, O. J. C., Godazgar, M., y Santos, J. E. (2015). Linear stability of Kerr-Newman black holes. \textit{Physical Review Letters}, \textit{114}(15), Artículo 151101. https://doi.org/10.1103/PhysRevLett.114.151101
+
+\bibitem[Duarte-Ortiz et al.(2024)]{Geod_sicas_en_la_m_trica_de_Schwarzschild__una_soluci_n_num_rica} Duarte-Ortiz, C., Leija, S., y Flores, F. (2024). Geodésicas en la métrica de Schwarzschild: Una solución numérica. \textit{Revista Mexicana de Física}, \textit{70}(2), Artículo 021401.
+
+\bibitem[Event Horizon Telescope Collaboration et al.(2019a)]{EHT_Paper1} Event Horizon Telescope Collaboration et al. (2019a). First M87 Event Horizon Telescope results. I. The shadow of the supermassive black hole. \textit{The Astrophysical Journal Letters}, \textit{875}(1), L1. https://doi.org/10.3847/2041-8213/ab0ec7
+
+\bibitem[Event Horizon Telescope Collaboration et al.(2019b)]{EHT_Paper4} Event Horizon Telescope Collaboration et al. (2019b). First M87 Event Horizon Telescope results. IV. Imaging the central supermassive black hole. \textit{The Astrophysical Journal Letters}, \textit{875}(1), L4. https://doi.org/10.3847/2041-8213/ab0e85
+
+\bibitem[Event Horizon Telescope Collaboration et al.(2019c)]{EHT_Paper6} Event Horizon Telescope Collaboration et al. (2019c). First M87 Event Horizon Telescope results. VI. The shadow and mass of the central black hole. \textit{The Astrophysical Journal Letters}, \textit{875}(1), L6. https://doi.org/10.3847/2041-8213/ab1141
+
+\bibitem[Event Horizon Telescope Collaboration et al.(2022)]{EHT_SgrA_Paper1} Event Horizon Telescope Collaboration et al. (2022). First Sagittarius A* Event Horizon Telescope results. I. The shadow of the supermassive black hole. \textit{The Astrophysical Journal Letters}, \textit{930}(1), L12. https://doi.org/10.3847/2041-8213/ac6674
+
+\bibitem[Event Horizon Telescope Collaboration et al.(2024a)]{EHT_SgrA_Paper7} Event Horizon Telescope Collaboration et al. (2024a). First Sagittarius A* Event Horizon Telescope results. VII. Polarization of the supermassive black hole. \textit{The Astrophysical Journal Letters}, \textit{964}(2), L25. https://doi.org/10.3847/2041-8213/ad2df0
+
+\bibitem[Event Horizon Telescope Collaboration et al.(2024b)]{EHT_SgrA_Paper8} Event Horizon Telescope Collaboration et al. (2024b). First Sagittarius A* Event Horizon Telescope results. VIII. Physical implications of the polarimetric properties. \textit{The Astrophysical Journal Letters}, \textit{964}(2), L26. https://doi.org/10.3847/2041-8213/ad2df1
+
+\bibitem[Giataganas et al.(2024)]{bh_mergers_photon_ring} Giataganas, D., Kehagias, A., y Riotto, A. (2024). Black hole mergers as the fastest photon ring scramblers. \textit{Physical Review Letters}, \textit{133}(8), Artículo 081401. https://doi.org/10.1103/PhysRevLett.133.081401
+
+\bibitem[Grenzebach et al.(2014)]{1403.5234v2} Grenzebach, A., Perlick, V., y Lämmerzahl, C. (2014). Photon regions and shadows of Kerr-Newman-NUT black holes with a cosmological constant. \textit{Physical Review D}, \textit{89}(12), Artículo 124004. https://doi.org/10.1103/PhysRevD.89.124004
+\bibitem[Grenzebach et al.(2014)]{Grenzebach2014} Grenzebach, A., Perlick, V., y Lämmerzahl, C. (2014). Photon regions and shadows of Kerr-Newman-NUT black holes with a cosmological constant. \textit{Physical Review D}, \textit{89}(12), Artículo 124004. https://doi.org/10.1103/PhysRevD.89.124004
+
+\bibitem[Heydarzade y Vertogradov(2024)]{dinamica_de_photones_bh_cargado} Heydarzade, Y., y Vertogradov, V. (2024). Dynamical photon spheres in charged black holes and naked singularities. \textit{The European Physical Journal C}, \textit{84}(6), Artículo 582. https://doi.org/10.1140/epjc/s10052-024-12935-7
+
+\bibitem[Hobson et al.(2006)]{M_P_Hobson_General_Relativity} Hobson, M. P., Efstathiou, G. P., y Lasenby, A. N. (2006). \textit{General relativity: An introduction for physicists}. Cambridge University Press.
+
+\bibitem[Huang y Mai(2021)]{s10052-021-09180-y} Huang, J. H., y Mai, Z. F. (2021). Superradiance and stability of Kerr-Newman black holes. \textit{The European Physical Journal C}, \textit{81}(5), Artículo 402. https://doi.org/10.1140/epjc/s10052-021-09180-y
+
+\bibitem[Johnson et al.(2024)]{2406.09498v1} Johnson, M. D., Lupsasca, A., Strominger, A., Wong, G. N., Hadar, S., Kapec, D., Narayan, R., Roelofs, F., Alexeev, A., y Galison, P. (2024). Key science goals for the Black Hole Explorer (BHEX). \textit{arXiv preprint arXiv:2406.09498}. https://doi.org/10.48550/arXiv.2406.09498
+\bibitem[Johnson et al.(2024)]{Johnson2024} Johnson, M. D., Lupsasca, A., Strominger, A., Wong, G. N., Hadar, S., Kapec, D., Narayan, R., Roelofs, F., Alexeev, A., y Galison, P. (2024). Key science goals for the Black Hole Explorer (BHEX). \textit{arXiv preprint arXiv:2406.09498}. https://doi.org/10.48550/arXiv.2406.09498
+
+\bibitem[Kobialko y Gal'tsov(2024)]{perturbaciones_en_bh} Kobialko, K. V., y Gal'tsov, D. V. (2024). Perturbation theory for gravitational shadows in static spherically symmetric spacetimes. \textit{Physical Review D}, \textit{110}(4), Artículo 044039. https://doi.org/10.1103/PhysRevD.110.044039
+\bibitem[Kobialko y Gal'tsov(2024)]{Kobialko2024} Kobialko, K. V., y Gal'tsov, D. V. (2024). Perturbation theory for gravitational shadows in static spherically symmetric spacetimes. \textit{Physical Review D}, \textit{110}(4), Artículo 044039. https://doi.org/10.1103/PhysRevD.110.044039
+
+\bibitem[Li et al.(2025)]{Li2025} Li, X., Chen, Y., y Zhang, J. (2025). Observational signatures of Kerr-Newman black holes with geodesic observers. \textit{The European Physical Journal C}, \textit{85}(1), Artículo 42. https://doi.org/10.1140/epjc/s10052-024-12635-7
+\bibitem[Li et al.(2024)]{s10052-024-12635-7} Li, X., Chen, Y., y Zhang, J. (2024). Observational signatures of Kerr-Newman black holes with geodesic observers. \textit{The European Physical Journal C}, \textit{85}(1), Artículo 42. https://doi.org/10.1140/epjc/s10052-024-12635-7
+
+\bibitem[Nayfeh(1993)]{Ali-H.-Nayfeh-Introduction-to-perturbation-techniques-1993-Wiley-VCH} Nayfeh, A. H. (1993). \textit{Introduction to perturbation techniques}. Wiley-VCH.
+\bibitem[Nayfeh(1993)]{Nayfeh1993} Nayfeh, A. H. (1993). \textit{Introduction to perturbation techniques}. Wiley-VCH.
+
+\bibitem[Patel et al.(2022)]{Reproducibility_of_the_First_Image_of_a_Black_Hole_in_the_Galaxy_M87_From_the_Event_Horizon_Telescope_Collaboration} Patel, R., Pesce, D. W., Blackburn, L., y Chael, A. (2022). Reproducibility of the first image of a black hole in the galaxy M87 from the Event Horizon Telescope Collaboration. \textit{IEEE Annals of the History of Computing}, \textit{44}(4), 30–42. https://doi.org/10.1109/MAHC.2022.3216854
+
+\bibitem[Raine y Thomas(2015)]{Raine_Thomas_2015} Raine, D., y Thomas, E. (2015). \textit{Black holes: An introduction} (2.ª ed.). Imperial College Press / World Scientific.
+
+\bibitem[Sneppen(2021a)]{Sneppen} Sneppen, A. (2021a). Divergent reflections around the photon sphere of a black hole. \textit{Scientific Reports}, \textit{11}(1), Artículo 14195. https://doi.org/10.1038/s41598-021-93357-w
+\bibitem[Sneppen(2021a)]{Sneppen2021} Sneppen, A. (2021a). Divergent reflections around the photon sphere of a black hole. \textit{Scientific Reports}, \textit{11}(1), Artículo 14195. https://doi.org/10.1038/s41598-021-93357-w
+
+\bibitem[Sneppen(2021b)]{pertbuciiones_teoria_en_bh} Sneppen, A. (2021b). Light trajectories and photon ring structure near black holes. \textit{Physical Review D}, \textit{103}(4), Artículo 044031. https://doi.org/10.1103/PhysRevD.103.044031
+
+\bibitem[Téllez Tovar et al.(2025)]{shadows_quintessence_bh} Téllez Tovar, L. O., González, A., y Ramírez, M. (2025). Shadows and photon rings of black holes surrounded by quintessence. \textit{Publicación de Ciencias Básicas Pädi}, \textit{13}(25), 8–15.
+
+\bibitem[Tiede et al.(2022)]{Measuring_Photon_Rings_with_the_ngEHT} Tiede, P., Johnson, M. D., Pesce, D. W., Palumbo, D. C. M., Chang, D. O., y Galison, P. (2022). Measuring photon rings with the ngEHT. \textit{Galaxies}, \textit{10}(6), Artículo 111. https://doi.org/10.3390/galaxies10060111
+
+\bibitem[Valencia Sullca(2021)]{ValenciaSullca2021} Valencia Sullca, J. (2021). \textit{Técnicas de perturbación para ecuaciones diferenciales con incertidumbre y aplicaciones} [Tesis de Licenciatura, Universidad Nacional Mayor de San Marcos]. Repositorio Institucional UNMSM.
+
+\bibitem[Villegas(2022)]{05villegas} Villegas, F. (2022). Sombra del agujero negro de Schwarzschild. \textit{Revista de Investigación de Física}, \textit{25}(3), 40–48. https://doi.org/10.15381/rif.v25i3.22814
+
+\end{thebibliography}
+
+%========================================================
+%COMENTAR SI NO DESEA QUE APAREZCA EN EL INDICE GENERAL
+%========================================================
+
+
+
+%==============================================================
+%  SE ADICIONA LAS SECCIONES: ANEXO Y APÉNDICE 
+%  COMENTAR SI NO DESEA QUE APAREZCA ESTA PARTE DEL DOCUMENTO
+%==============================================================
+\include{./Docs/anexo} %% Opcional %COMENTAR SI FUERA EL CASO
+\include{./Docs/apendice} %% Opcional % COMENTAR SI FUERA EL CASO
+
+\end{document}

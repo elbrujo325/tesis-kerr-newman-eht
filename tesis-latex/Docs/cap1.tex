@@ -1,0 +1,42 @@
+%=============================
+%  PRIMER CAPITULO
+%=============================
+\chapter{INTRODUCCIÓN}
+
+\section{Contexto de la astronomía de precisión: El Event Horizon Telescope (EHT)}
+En las últimas décadas, la astrofísica y la relatividad general han ingresado a una era de precisión observacional sin precedentes \citep{EHT_Paper1, EHT_Paper4}. La colaboración internacional del Event Horizon Telescope (EHT) ha logrado capturar las primeras imágenes directas de las sombras y los anillos de emisión alrededor de los agujeros negros supermasivos M87* y Sgr A* \citep{EHT_Paper1, EHT_Paper6}. Estas observaciones abren la oportunidad de testear soluciones de las ecuaciones de Einstein en el régimen de campos gravitacionales fuertes.
+
+% ==============================================================================
+% SECCIÓN: MOTIVACIÓN FÍSICA DE LA CARGA ELÉCTRICA EN AGUJEROS NEGROS ASTROFÍSICOS
+% ==============================================================================
+
+
+\section{Motivación física de la carga eléctrica en agujeros negros astrofísicos}
+
+Aunque habitualmente se asume la hipótesis de neutralidad eléctrica estricta ($Q = 0$) para objetos compactos astrofísicos bajo la premisa de una rápida neutralización por el plasma circundante, análisis electrodinámicos y perturbativos en espaciotiempos curvos demuestran la estabilidad y vigencia del estudio de cargas residuales pequeñas $Q \neq 0$ \citep{PhysRevLett.114.151101, s10052-021-09180-y}. En entornos astrofísicos reales, la presencia de campos magnéticos intensos en discos de acreción magnetizados —como los estados de disco magnéticamente arrestado (MAD) modelados para M87* y Sgr A*— induce campos eléctricos por efecto del arrastre de marcos (\textit{frame-dragging}), permitiendo mantener configuraciones de equilibrio con carga residual \citep{EHT_Paper1, 2406.09498v1} Asimismo, procesos de acreción en plasmas ionizados y límites electrodinámicos de descarga por producción de pares restringen cualquier carga remanente estable al régimen de \textbf{carga eléctrica débil}, expresado en unidades del Sistema Internacional (SI) mediante la condición adimensional \citep{1403.5234v2, Broderick_2022_ApJ_927_6}:
+\begin{equation}
+    \delta \equiv \frac{Q^2}{4\pi\varepsilon_0 G M^2} \ll 1
+\end{equation}
+En este régimen perturbativo ($\delta \ll 1$), el espaciotiempo de Kerr-Newman constituye un marco teórico y una métrica \textit{proxy} idónea para modelar pequeñas desviaciones geométricas respecto al caso puro de Kerr y contrastarlas con las observaciones de la sombra y el anillo de fotones del \textit{Event Horizon Telescope} \citep{1403.5234v2, Broderick_2022_ApJ_927_6}.
+
+% ==============================================================================
+% SECCIÓN: JUSTIFICACIÓN Y OBJETIVOS DE LA INVESTIGACIÓN
+% ==============================================================================
+
+\section{Justificación y Objetivos de la Investigación}
+
+El estudio de la sombra de agujeros negros y la estructura fina del anillo de fotones ha cobrado una relevancia observacional sin precedentes tras las publicaciones de la colaboración \textit{Event Horizon Telescope} (EHT) para M87* y Sgr A*. Tradicionalmente, la interpretación de los perfiles de visibilidad interferométrica $|V(u)|$ asume como fondo un espaciotiempo estático de Schwarzschild, atribuyendo cualquier desviación geométrica a incertidumbres en la masa y la distancia ($M/D$) o a la compleja hidrodinámica del plasma de acreción. 
+
+Esta investigación se justifica formalmente al proponer un cambio de paradigma analítico: utilizar como fondo físico exacto el espaciotiempo de Kerr-Newman en el régimen de carga eléctrica débil ($\delta \equiv \frac{Q^2}{4\pi\varepsilon_0 G M^2} \ll 1$), formulado rigurosamente en unidades del Sistema Internacional (SI) y firma métrica de Minkowski $(+,-,-,-)$. Este enfoque permite conectar directamente la electrodinámica en campos fuertes con observables interferométricos del EHT, obteniendo expansiones perturbativas analíticas de segundo orden que aíslan la firma de electrovacío de la carga ($D = 1/27$) frente a modelos de gravedad modificada o agujeros negros regulares. Asimismo, permite contrastar el modelo con los microdatos interferométricos reales ($N = 9\,304$ visibilidades en Sgr A* y $N = 4\,237$ en M87*), proporcionando una interpretación física y epistemológica sobre el rol de $\delta$ como un parámetro de escala efectiva dentro de modelos radiales simétricos.
+
+\subsection{Objetivo General}
+Demostrar analíticamente que la modelación de la geodésica de fotones críticos utilizando como espaciotiempo de fondo la métrica de Kerr-Newman bajo la aproximación de carga débil ($\delta \ll 1$), en lugar de una expansión perturbativa simétrica sobre el fondo estático de Schwarzschild, permite derivar correcciones analíticas de segundo orden al radio efectivo de la sombra $R_{\mathrm{eff}}(\delta)$ y minimizar la función de costo estadístico $\Delta\chi^2$ en los perfiles de visibilidad interferométrica $|V(u)|$ medidos por el Event Horizon Telescope (EHT) para Sgr A*, desplazando el primer nulo de visibilidad en un.
+
+\subsection{Objetivos Específicos}
+\begin{enumerate}
+    \item Deducir el potencial radial efectivo $\mathcal{R}(r)$ y las ecuaciones geodésicas nulas a partir del formalismo de Hamilton-Jacobi y la función de acción $S$ en el espaciotiempo de Kerr-Newman, expresados en el Sistema Internacional (SI) y firma métrica $(+,-,-,-)$, identificando las constantes de movimiento conservadas ($E, L_z, \mathcal{K}$).
+    \item Formular las condiciones de órbita fotónica esférica inestable $\mathcal{R}(r_{\mathrm{ph}}) = 0$ y $\left.\frac{d\mathcal{R}}{dr}\right|_{r_{\mathrm{ph}}} = 0$ en función de los parámetros de impacto reducidos $\Phi \equiv \frac{c L_z}{E}$ y $\mathcal{Q} \equiv \frac{c^2 \mathcal{K}}{E^2}$, derivando las funciones críticas $(\Phi_c, \mathcal{Q}_c)$ que determinan la sombra celeste $(\alpha_c, \beta_c)$ y obteniendo las expansiones de Taylor analíticas para el radio fotónico $r_{\mathrm{ph}}(\delta)$, el radio efectivo $R_{\mathrm{eff}}(\delta)$ (con coeficiente de segundo orden $-7/216$) y la posición del primer nulo de visibilidad $u_1(\delta)$ (con coeficiente $+13/216$).
+    \item Analizar la ecuación diferencial del oscilador inestable de Lyapunov y demostrar cómo la degradación del exponente orbital por efecto del momento angular ($\gamma_\phi < 1$) relaja el factor de adelgazamiento de Sneppen ($f_{\mathrm{thin}} = e^{-2\pi\gamma_\phi}$), justificando el ensanchamiento orbital del primer subanillo de fotones $n=1$.
+    \item Adaptar el formalismo perturbativo de Kobialko para la expansión del parámetro de impacto crítico $b_c^2 = \mathcal{Q}_c + \Phi_c^2$ a métricas rotacionales no diagonales, aislando analíticamente la firma unívoca de carga electrostática $D = 1/27$ frente a soluciones de agujeros negros regulares (Bardeen $2/27$ y Hayward $8/243$).
+    \item Ejecutar un protocolo de ajuste de mínimos cuadrados sobre el modelo de visibilidad de Bessel $J_0$ con envolvente gaussiana empleando las visibilidades reales del EHT para Sgr A* ($2024\text{-D02-01}$) y M87* ($2024\text{-D01-01}$), contrastando la variación en la bondad de ajuste ($\Delta\chi^2_\nu$) frente a las incertidumbres sistemáticas en la razón masa-distancia ($M/D$).
+\end{enumerate}

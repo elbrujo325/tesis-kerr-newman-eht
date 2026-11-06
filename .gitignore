@@ -37,11 +37,23 @@ htmlcov/
 Thumbs.db
 
 # Project specific - Generated/Downloaded (not committed)
-2024-D02-01/          # Cloned EHT repo (auto-downloaded by scripts)
-results/              # Generated numerical results
-figures/              # Generated figures
-legacy/               # Obsolete/incorrect code
-*.npz                 # Saved numpy arrays (generated)
+2024-D02-01/
+results/
+figures/
+docs/figuras/
+tesis-latex/*.aux
+tesis-latex/*.log
+tesis-latex/*.out
+tesis-latex/*.toc
+tesis-latex/*.lof
+tesis-latex/*.lot
+tesis-latex/*.bbl
+tesis-latex/*.blg
+tesis-latex/*.synctex.gz
+tesis-latex/*.fls
+tesis-latex/*.fdb_latexmk
+*.npz
+comparacion_schwarzschild_vs_kerr_newman.png
 
 # Allow specific figures in docs/
 !docs/FIGURAS_TESIS/
