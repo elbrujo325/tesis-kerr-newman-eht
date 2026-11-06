@@ -197,76 +197,10 @@ Elevando la Ecuación~(\ref{eq:relacion_p_r_dot_r}) al cuadrado e igualando con 
     \Sigma^2(r,\theta) \left( \frac{dr}{d\lambda} \right)^2 = \mathcal{R}(r) \quad \implies \quad \Sigma(r,\theta) \frac{dr}{d\lambda} = \pm \sqrt{\mathcal{R}(r)}
     \label{eq:ecuacion_movimiento_r_final}
 \end{equation}
-Queda demostrado así que la derivada de la acción radial $\frac{dS_r}{dr}$ no desaparece, sino que rige exactamente la ecuación diferencial cinemática del movimiento fotónico radial~(\ref{eq:ecuacion_movimiento_r_final}).
 
 
-Reagrupando los términos del corchete en aquellos que contienen el factor $\Delta$ y aquellos que no lo contienen:
-\begin{align}
-    &\left[ \frac{E^2}{c^2}(r^2+a^2)^2 - \frac{2a E L_z}{c}(r^2+a^2) + a^2 L_z^2 \right] \nonumber \\
-    &\quad - \Delta \left[ \frac{a^2 E^2}{c^2}\sin^2\theta - \frac{2a E L_z}{c} + \frac{L_z^2}{\sin^2\theta} \right]
-    \label{eq:paso_algebraico_2}
-\end{align}
-Completando los cuadrados perfectos en ambas agrupaciones algebraicas:
-\begin{align}
-    \left[ \frac{E^2}{c^2}(r^2+a^2)^2 - \frac{2a E L_z}{c}(r^2+a^2) + a^2 L_z^2 \right] &= \left[ (r^2+a^2)\frac{E}{c} - a L_z \right]^2 \label{eq:cuadrado_1} \\
-    \left[ \frac{a^2 E^2}{c^2}\sin^2\theta - \frac{2a E L_z}{c} + \frac{L_z^2}{\sin^2\theta} \right] &= \left( \frac{L_z}{\sin\theta} - a \frac{E}{c} \sin\theta \right)^2 \label{eq:cuadrado_2}
-\end{align}
 
-Sustituyendo los cuadrados~(\ref{eq:cuadrado_1}--\ref{eq:cuadrado_2}) en la Ecuación~\eqref{eq:paso_algebraico_1}, se obtiene la identidad de separación exacta:
-\begin{equation}
-    g^{tt} E^2 - 2g^{t\phi} E L_z + g^{\phi\phi} L_z^2 = \frac{1}{\Sigma} \left[ \frac{1}{\Delta} \left( (r^2 + a^2)\frac{E}{c} - a L_z \right)^2 - \frac{1}{\sin^2\theta} \left( \frac{L_z}{\sin\theta} - a \frac{E}{c} \sin\theta \right)^2 \right]
-    \label{eq:identidad_separacion}
-\end{equation}
 
-Sustituyendo la Identidad~\eqref{eq:identidad_separacion} en la Ecuación~\eqref{eq:HJ_sustituido} y multiplicando toda la ecuación por la función métrica $\Sigma(r,\theta) \neq 0$:
-\begin{equation}
-    \frac{1}{\Delta} \left( (r^2 + a^2)\frac{E}{c} - a L_z \right)^2 - \frac{1}{\sin^2\theta} \left( \frac{L_z}{\sin\theta} - a \frac{E}{c} \sin\theta \right)^2 - \Delta \left(\frac{dS_r}{dr}\right)^2 - \left(\frac{dS_\theta}{d\theta}\right)^2 = 0
-\end{equation}
-
-Aislando las funciones que dependen exclusivamente de la coordenada radial $r$ en el miembro izquierdo y aquellas que dependen de la coordenada angular $\theta$ en el miembro derecho:
-\begin{equation}
-    \frac{1}{\Delta} \left( (r^2 + a^2)\frac{E}{c} - a L_z \right)^2 - \Delta \left(\frac{d S_r}{dr}\right)^2 = \left(\frac{d S_\theta}{d\theta}\right)^2 + \left( \frac{L_z}{\sin\theta} - a \frac{E}{c} \sin\theta \right)^2
-    \label{eq:separacion_completa}
-\end{equation}
-
-Debido a que el miembro izquierdo de la Ecuación~\eqref{eq:separacion_completa} depende únicamente de $r$ y el miembro derecho depende exclusivamente de $\theta$, ambos lados deben ser iguales a una constante de separación independiente de las coordenadas. Esta constante es la \textbf{Constante de separación de Carter} $\mathcal{K}$ \citep{pdfcoffee.com_chandrasekhar, 1403.5234v2, Achour_2025_J._Cosmol._Astropart._Phys._2025_012}:
-\begin{align}
-    \left(\frac{d S_\theta}{d\theta}\right)^2 + \left( \frac{L_z}{\sin\theta} - a \frac{E}{c} \sin\theta \right)^2 &= \mathcal{K} \label{eq:carter_angular} \\
-    \frac{1}{\Delta} \left( (r^2 + a^2)\frac{E}{c} - a L_z \right)^2 - \Delta \left(\frac{d S_r}{dr}\right)^2 &= \mathcal{K} \label{eq:carter_radial}
-\end{align}
-
-Para el movimiento plano en el ecuador ($\theta = \pi/2$), tenemos que $\sin\theta = 1$ y $\frac{d S_\theta}{d\theta} = 0$. Evaluando la Ecuación~\eqref{eq:carter_angular} bajo esta restricción, la constante de Carter adopta la forma reducida \citep{perturbaciones_en_bh}:
-\begin{equation}
-    \mathcal{K} = \left( L_z - \frac{a E}{c} \right)^2
-    \label{eq:carter_ecuatorial}
-\end{equation}
-
-A partir de la ecuación de separación radial~\eqref{eq:carter_radial}, despejamos el término que contiene el momento radial $p_r = \frac{d S_r}{dr}$ multiplicando por $\Delta(r)$:
-\begin{equation}
-    \Delta^2 \left(\frac{d S_r}{dr}\right)^2 = \left( (r^2 + a^2)\frac{E}{c} - a L_z \right)^2 - \Delta(r) \mathcal{K}
-    \label{eq:Sr_despejada}
-\end{equation}
-
-Por otra parte, la relación entre el momento canónico $p_r$ y la velocidad geodésica radial $\dot{r} = \frac{dr}{d\lambda}$ viene dada por $p_r = g_{rr} \dot{r}$. Considerando la componente $g_{rr} = -\frac{\Sigma}{\Delta}$, se obtiene \citep{05villegas, 1403.5234v2}:
-\begin{equation}
-    p_r = \frac{d S_r}{dr} = -\frac{\Sigma}{\Delta} \frac{dr}{d\lambda}
-    \label{eq:pr_cinematica}
-\end{equation}
-En el plano ecuatorial ($\theta = \pi/2$), la función métrica es $\Sigma = r^2$. Sustituyendo la Ecuación~\eqref{eq:pr_cinematica} en el miembro izquierdo de la Ecuación~\eqref{eq:Sr_despejada}:
-\begin{equation}
-    \Delta^2 \left( -\frac{r^2}{\Delta} \frac{dr}{d\lambda} \right)^2 = r^4 \left(\frac{dr}{d\lambda}\right)^2
-\end{equation}
-
-Igualando este resultado con el miembro derecho de la Ecuación~\eqref{eq:Sr_despejada} y sustituyendo la constante de Carter ecuatorial~\eqref{eq:carter_ecuatorial}, se obtiene la ecuación diferencial radial paso a paso \citep{1403.5234v2, s10052-021-09180-y}:
-\begin{equation}
-    r^4 \left( \frac{dr}{d\lambda} \right)^2 = \mathcal{R}(r)
-    \label{eq:eq_radial_paso_paso}
-\end{equation}
-donde el **potencial efectivo radial** $\mathcal{R}(r)$ queda definido exactamente por \citep{1403.5234v2, s10052-021-09180-y}:
-\begin{equation}
-    \mathcal{R}(r) = \left[ (r^2 + a^2)\frac{E}{c} - a L_z \right]^2 - \Delta(r) \left( L_z - \frac{a E}{c} \right)^2
-    \label{eq:potencial_R_demostrado}
-\end{equation}
 
 % ==============================================================================
 % SECCIÓN: DEDUCCIÓN DE LA FUNCIÓN R^2(r) DE KOBIALKO Y PARÁMETROS DE IMPACTO (Phi, Q)
